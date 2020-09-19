@@ -1,0 +1,23 @@
+/**
+ * Alipay.com Inc.
+ * Copyright (c) 2004-2019 All Rights Reserved.
+ */
+package com.module.linkedList.model;
+
+/**
+ * @author paras.chawla
+ * @version $Id: ListNode.java, v 0.1 2019-06-24 21:51 paras.chawla Exp $$
+ */
+public class ListNode {
+
+    public int val;
+    public ListNode next;
+
+    public ListNode(int x) {
+        val = x;
+    }
+
+    public ListNode() {
+    }
+
+}

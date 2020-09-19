@@ -1,0 +1,13 @@
+directed
+6
+Bangalore
+Hyderabad
+Chennai
+Mumbai
+Delhi
+Kerala
+Bangalore Hyderabad
+Bangalore Chennai
+Hyderabad Mumbai
+Hyderabad Delhi
+Chennai Kerala

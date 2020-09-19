@@ -1,0 +1,15 @@
+directed
+6
+A
+B
+C
+D
+E
+F
+A D
+D B
+D E
+B C
+B E
+E C
+E F
