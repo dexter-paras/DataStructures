@@ -26,3 +26,5 @@ Thumbs.db
 *.*~
 ~*.*
 log.txt
+src/com/module/designpattern/strategy/
+src/com/module/dividenconquer/

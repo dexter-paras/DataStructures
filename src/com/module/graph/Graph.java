@@ -224,13 +224,13 @@ public class Graph {
 
         /* dfs/bfs shouldn't be call from any particular vertex, so handler included outside and
          restart happens from all vertices so as to cover full traversal */
-        //graph.dfs();
+        graph.dfs();
 
         graph.bfs();
 
-        //graph.dfsTopSort();
+        graph.dfsTopSort();
 
-        //graph.topologicalSort();
+        graph.topologicalSort();
 
     }
 }

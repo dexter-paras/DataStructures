@@ -5,6 +5,7 @@ package com.module.recursion;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -18,19 +19,19 @@ public class PowerSet {
 
     public List<List<Integer>> subsets(int[] nums) {
 
-        if(nums.length ==0){
+        if (nums.length == 0) {
             return result;
         }
 
         List<Integer> partialSubSet = new ArrayList();
-        generatePowerSet(0,nums,result,partialSubSet);
+        generatePowerSet(0, nums, result, partialSubSet);
         return result;
     }
 
-    void generatePowerSet(int idx, int[] nums ,List<List<Integer>> result,List<Integer> partialSubSet){
+    void generatePowerSet(int idx, int[] nums, List<List<Integer>> result, List<Integer> partialSubSet) {
 
         // base condition
-        if(idx==nums.length){
+        if (idx == nums.length) {
             // add deep copy of partialSubset in final result
             result.add(new ArrayList<Integer>(partialSubSet));
             return;
@@ -40,25 +41,25 @@ public class PowerSet {
         partialSubSet.add(nums[idx]);
 
         // after choosing element at idx i , moving to next idx and calling recursion
-        generatePowerSet(idx+1,nums,result,partialSubSet);
+        generatePowerSet(idx + 1, nums, result, partialSubSet);
 
         // Not choosing element at index idx in partialSubSet
-        partialSubSet.remove(partialSubSet.size()-1);
+        partialSubSet.remove(partialSubSet.size() - 1);
 
         // after not choosing element at idx i , moving to next idx and calling recursion
-        generatePowerSet(idx+1,nums,result,partialSubSet);
+        generatePowerSet(idx + 1, nums, result, partialSubSet);
 
     }
 
-    // the method below is adding elements and constructing subsets
+    // Approach 2- the method below is adding elements and constructing subsets
     public List<List<Integer>> subsets2(int[] nums) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
         List<Integer> tmp = new ArrayList<Integer>();
         result.add(tmp); // add empty set
         Arrays.sort(nums);
-        for (int i=0; i<nums.length; i++){
-            int n =  result.size();
-            for(int j=0; j<n; j++){
+        for (int i = 0; i < nums.length; i++) {
+            int n = result.size();
+            for (int j = 0; j < n; j++) {
                 // NOTE: must create a new tmp object, and add element to it.
                 tmp = new ArrayList<Integer>(result.get(j));
                 tmp.add(nums[i]);
@@ -68,9 +69,26 @@ public class PowerSet {
         return result;
     }
 
+    // Approach 3- Using BitManipulation
+
+    public List<List<Integer>> subsetsUsingBitManipulation(int[] nums) {
+        Arrays.sort(nums);
+        int totalNumber = 1 << nums.length;
+        List<List<Integer>> collection = new ArrayList<List<Integer>>(totalNumber);
+        for (int i = 0; i < totalNumber; i++) {
+            List<Integer> set = new LinkedList<>();
+            for (int j = 0; j < nums.length; j++) {
+                if ((i & (1 << j)) != 0) {
+                    set.add(nums[j]);
+                }
+            }
+            collection.add(set);
+        }
+        return collection;
+    }
 
     public static void main(String[] args) {
         PowerSet obj = new PowerSet();
-        System.out.println(obj.subsets2(new int[]{1,2,3}));
+        System.out.println(obj.subsetsUsingBitManipulation(new int[] {1, 2, 3}));
     }
 }
