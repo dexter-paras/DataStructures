@@ -109,7 +109,7 @@ public class MeetingRoom2 {
                 heap.poll();
             }
             // if start time of a meeting is less than end time of a room which is currently in used
-            // we should create new room
+            // OVERLAPPING, we should create new room
             heap.add(intervals[i][1]);
         }
         return heap.size();

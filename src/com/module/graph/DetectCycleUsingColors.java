@@ -26,7 +26,7 @@ public class DetectCycleUsingColors {
         return false;
     }
 
-    // 2. To find if cycle exist from particular vertex - check all childrens and recurse
+    // 2. To find if cycle exist from particular vertex - check all childrens and do recursion
     private boolean hasCycleFromVertex(GraphVertex graphVertex) {
 
         /* Base condition
@@ -59,7 +59,9 @@ public class DetectCycleUsingColors {
             GRAY,
             BLACK
         };
-        Color             color;
+
+        // default color as WHITE initially
+        Color             color= Color.WHITE;
         List<GraphVertex> edges;
     }
 

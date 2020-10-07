@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * @author paras.chawla
- * @version $Id: CopyListRandomPointer.java, v 0.1 2020-05-21 23:41 paras.chawla Exp $$
+ * @version $Id: CopyListRandomPointer.java, v 0.1 2020-05-21 23:41 paras.chawla Exp $$ https://www.youtube.com/watch?v=OvpKeraoxW0
  */
 public class CopyListRandomPointer {
 
@@ -27,8 +27,40 @@ public class CopyListRandomPointer {
         node2.setRandom(node1);
 
         // To find deep copy
-        Node deepCopy = new CopyListRandomPointer().copyRandomList(node0);
+        Node deepCopy = new CopyListRandomPointer().copyRandomListSol2(node0);
         System.out.println(deepCopy);
+    }
+
+    public Node copyRandomListSol2(Node head) {
+        if (head == null) {
+            return head;
+        }
+
+        // pass 1 - create mapping of original node and create clone nodes out of that and save in HashMap
+        // create Visited Dictionary of oldNodes and newCloneNodes Map< Original Node, Clone Node>
+        Map<Node, Node> map = new HashMap<>();
+
+        Node pointer = head;
+        while (pointer != null) {
+            Node newNode = new Node(pointer.data);
+            map.put(pointer, newNode);
+            pointer = pointer.next;
+        }
+
+        // pass 2 - traverse and start mapping next and random pointer of clone nodes
+        Node currNode = head;
+        Node cloneNode = map.get(currNode);
+        Node result = cloneNode;
+        while (currNode != null) {
+            // get clone node of current Node
+            cloneNode = map.get(currNode);
+
+            cloneNode.next = map.get(currNode.next);
+            cloneNode.random = map.get(currNode.random);
+            currNode = currNode.next;
+        }
+
+        return result;
     }
 
     private Node copyRandomList(Node head) {
