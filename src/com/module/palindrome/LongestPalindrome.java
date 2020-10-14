@@ -9,12 +9,8 @@ import java.util.Set;
 /**
  * @author paras.chawla
  * @version $Id: LongestPalindrome.java, v 0.1 2020-08-17 23:22 paras.chawla Exp $$
- *
- * Input: s = "abccccdd"
- * Output: 7
- * Explanation:
- * One longest palindrome that can be built is "dccaccd", whose length is 7.
- *
+ * <p>
+ * Input: s = "abccccdd" Output: 7 Explanation: One longest palindrome that can be built is "dccaccd", whose length is 7.
  */
 public class LongestPalindrome {
 
@@ -30,7 +26,7 @@ public class LongestPalindrome {
                 set.add(ch);
             }
         }
-        return set.isEmpty() ? count*2 : count*2 + 1;
+        return set.isEmpty() ? count * 2 : count * 2 + 1;
     }
 
     public static void main(String[] args) {

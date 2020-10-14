@@ -15,7 +15,9 @@ import java.util.Map;
  */
 public class GroupAnagrams {
 
-    //["eat", "tea", "tan", "ate", "nat", "bat"]
+    /* Approach 1 - Using HashMap
+        ["eat", "tea", "tan", "ate", "nat", "bat"]
+    */
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> map = new HashMap<>();
 
@@ -36,8 +38,8 @@ public class GroupAnagrams {
     }
 
 
-    /*Approach 2
-     * Intent isto find same key for "abc" , "bca" , "cba"
+    /* Approach 2
+     * Intent is to find same key for "abc" , "bca" , "cba"
      * timeComplexity N*K , N(number of Strings) and K(max length of a String)
      */
 
@@ -51,6 +53,19 @@ public class GroupAnagrams {
                 23, 29, 31, 37, 41, 43, 47, 53,
                 59, 61, 67, 71, 73, 79, 83, 89,
                 97, 101};
+
+        // str - "abc"
+        // p = p* primes[c-'a'] = 1* primes['a' -'a'] = 1*2
+        // p = p* primes[c-'a'] = p* primes['b' -'a'] = 2*3
+        // p = p* primes[c-'a'] = p* primes['c' -'a'] = 6*5
+        // p =30
+
+        // str - "cba"
+        // p = p* primes[c-'a'] = 1* primes['c' -'a'] = 1*5 =5
+        // p = p* primes[c-'a'] = p* primes['b' -'a'] = 5*3=15
+        // p = p* primes[c-'a'] = p* primes['a' -'a'] = 15*2=30
+        // p = 30
+
         for (String str : strs) {
             int p = 1;
             for (char c : str.toCharArray()) {
@@ -70,7 +85,7 @@ public class GroupAnagrams {
     }
 
     public static void main(String[] args) {
-        System.out.println(new GroupAnagrams().groupAnagrams(new String[] {"ate", "tae", "bat", "cat", "tab"}));
+        //System.out.println(new GroupAnagrams().groupAnagrams(new String[] {"ate", "tae", "bat", "cat", "tab"}));
         System.out.println(new GroupAnagrams().groupAnagrams2(new String[] {"ate", "tae", "bat", "cat", "tab"}));
     }
 }

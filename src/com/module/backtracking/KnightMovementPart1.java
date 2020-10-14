@@ -44,7 +44,7 @@ public class KnightMovementPart1 {
 
     private static int minStepsToReachDest(Node src, Node dest, int N) {
 
-        // need which nodes are already visited and which all aren't visited
+        // Need which nodes are already visited and which all aren't visited
         Set<Node> visited = new HashSet<>();
 
         // queue to add further directional nodes and enqueue first node
@@ -52,7 +52,7 @@ public class KnightMovementPart1 {
         queue.add(src);
 
         // loop till queue is not empty
-        while (!queue.isEmpty()) {
+            while (!queue.isEmpty()) {
             Node currNode = queue.poll();
             System.out.println("X:" + currNode.x + " Y:" + currNode.y + " Dist:" + currNode.dist);
 

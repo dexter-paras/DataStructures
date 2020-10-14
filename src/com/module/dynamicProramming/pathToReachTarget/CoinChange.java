@@ -25,6 +25,7 @@ public class CoinChange {
         return combinations.size() == 0 ? -1 : minCoins;
     }
 
+    // Getting all combinations of coins(can be duplicate as well) possible which adds to targetAmount
     private void helper(int[] coins, int target, List<Integer> currList, int idx) {
 
         // base condition
@@ -44,7 +45,7 @@ public class CoinChange {
         }
     }
 
-    // Intuition is to find minimum number of coins for each amount and store in cache
+    // Intuition is to find minimum number of coins required for each amount and store in cache
     // coins= [1,2,3] , amount =10
     public int coinChangeDp(int[] coins, int amount) {
 

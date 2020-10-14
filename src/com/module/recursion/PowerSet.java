@@ -28,6 +28,24 @@ public class PowerSet {
         return result;
     }
 
+    /*
+     *                 1
+     *            N /     \ Y
+     *                    2
+     *                N /    \ Y
+     *                         3
+     *                    N /   \ Y
+     *                            4
+     *                        N /    \ Y
+     *                       {1,2,3}  {1,2,3,4}
+     * */
+
+    /* Intuition - At every Index, we've 2 choices whether to choose or whether not to choose particular item in array
+    1. Make a choice
+    2. Recurse
+    3. Undo the choice
+    */
+
     void generatePowerSet(int idx, int[] nums, List<List<Integer>> result, List<Integer> partialSubSet) {
 
         // base condition
@@ -87,8 +105,36 @@ public class PowerSet {
         return collection;
     }
 
+    public List<List<Integer>> subsetsSol3(int[] nums) {
+        List<List<Integer>> list = new ArrayList<>();
+        Arrays.sort(nums);
+        backtrack(list, new ArrayList<>(), nums, 0);
+        return list;
+    }
+
+    /*
+    Order of list
+    []
+    [1]
+    [1,2]
+    [1,2,3]
+    [1,3]
+    [2]
+    [2,3]
+    [3]
+    */
+
+    private void backtrack(List<List<Integer>> list, List<Integer> partialSubset, int[] nums, int idx) {
+        list.add(new ArrayList<>(partialSubset));
+        for (int i = idx; i < nums.length; i++) {
+            partialSubset.add(nums[i]);
+            backtrack(list, partialSubset, nums, i + 1);
+            partialSubset.remove(partialSubset.size() - 1);
+        }
+    }
+
     public static void main(String[] args) {
         PowerSet obj = new PowerSet();
-        System.out.println(obj.subsetsUsingBitManipulation(new int[] {1, 2, 3}));
+        System.out.println(obj.subsetsSol3(new int[] {1, 2, 3}));
     }
 }
