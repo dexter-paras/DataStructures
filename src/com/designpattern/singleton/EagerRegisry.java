@@ -11,6 +11,8 @@ package com.designpattern.singleton;
 // Approach 1 -Creating singleton instance of class during runtime
 public class EagerRegisry {
 
+    
+
     // creating single singleton instance during start
     private static final EagerRegisry INSTANCE = new EagerRegisry();
 

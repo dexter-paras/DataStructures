@@ -1,13 +1,14 @@
 /**
  * Alipay.com Inc. Copyright (c) 2004-2020 All Rights Reserved.
  */
-package com.module.contest;
+package com.parenthesis;
 
 import java.util.Stack;
 
 /**
  * @author paras.chawla
  * @version $Id: ValidateParenthesis.java, v 0.1 2020-04-16 22:37 paras.chawla Exp $$
+ * https://leetcode.com/problems/valid-parenthesis-string/
  */
 public class ValidateParenthesis {
 

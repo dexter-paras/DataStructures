@@ -4,6 +4,7 @@
 package com.module.array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -47,6 +48,25 @@ public class MeetingRoom1 {
         }*/
         return true;
 
+    }
+
+    public boolean canAttendMeetings2(int[][] intervals) {
+
+        if (intervals == null || intervals.length == 0 || intervals[0].length == 0) {
+            return true;
+        }
+
+        // Sort based on start time
+        // [0,30],[5,10],[15,20]
+        Arrays.sort(intervals,((int[] a, int[] b) -> a[0]- b[0]));
+
+        // Can Attend Meeting when start time of current meeting should be greater than end time of last meeting
+        for(int i=1;i< intervals.length;i++){
+            if(intervals[i][0] < intervals[i-1][1]){
+                return false;
+            }
+        }
+        return true;
     }
 
     public static void main(String[] args) {

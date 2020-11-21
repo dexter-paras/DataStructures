@@ -38,7 +38,7 @@ public class KSmallestElementSortedMatrix {
             for (int j = 0; j < matrix[0].length; j++) {
                 maxQueue.add(matrix[i][j]);
                 // As soon as heap size becomes more than k , remove top element
-                if (maxQueue.size() > k) {
+                if (maxQueue.size() == k +1) {
                     // removing max elements because max elements aren't required and concern is only on min elements
                     maxQueue.poll();
                 }
@@ -67,7 +67,7 @@ public class KSmallestElementSortedMatrix {
             int c = element.col;
 
             // If we have any new elements in the current row, add them
-            if (c < matrix[0].length) {
+            if (c < matrix[0].length-1) {
                 pq.offer(new HeapData(r, c + 1, matrix[r][c + 1]));
             }
         }
@@ -88,6 +88,6 @@ public class KSmallestElementSortedMatrix {
     }
 
     public static void main(String[] args) {
-        System.out.println(new KSmallestElementSortedMatrix().kthSmallest(new int[][] {{1, 5, 9}, {10, 11, 13}, {12, 13, 15}}, 8));
+        System.out.println(new KSmallestElementSortedMatrix().kthSmallestSol2(new int[][] {{1, 5, 9}, {10, 11, 13}, {12, 13, 15}}, 8));
     }
 }

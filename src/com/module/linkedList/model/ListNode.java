@@ -1,6 +1,5 @@
 /**
- * Alipay.com Inc.
- * Copyright (c) 2004-2019 All Rights Reserved.
+ * Alipay.com Inc. Copyright (c) 2004-2019 All Rights Reserved.
  */
 package com.module.linkedList.model;
 
@@ -13,11 +12,16 @@ public class ListNode {
     public int val;
     public ListNode next;
 
+    public ListNode() {
+    }
+
     public ListNode(int x) {
         val = x;
     }
 
-    public ListNode() {
+    public ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
     }
 
 }

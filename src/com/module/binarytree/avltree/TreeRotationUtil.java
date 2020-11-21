@@ -18,7 +18,7 @@ public class TreeRotationUtil {
      *  6  <- temp <- parent node
      *  /
      * 4  <- Imbalance node
-     * Needed : RIGHT ROTATION on parent node
+     * Needed : RIGHT ROTATION on grand parent node
      */
     public static BinaryNode rightRotation(BinaryNode node) {
         BinaryNode temp = node.leftChild;
@@ -34,7 +34,7 @@ public class TreeRotationUtil {
      *  6  <- temp <- parent node
      *  \
      *   8  <- Imbalance node
-     * Needed : LEFT ROTATION on parent node
+     * Needed : LEFT ROTATION on grand parent node
      */
     public static BinaryNode leftRotation(BinaryNode node) {
         BinaryNode temp = node.rightChild;
@@ -45,7 +45,7 @@ public class TreeRotationUtil {
 
     /* RIGHT CHILD LEFT SUBTREE
      *
-     * 4 <- node
+     * 4 <- grand Parent node
      * \
      *  8 <- parent node
      * /

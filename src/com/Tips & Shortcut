@@ -1,0 +1,8 @@
+1. Use putIfAbsent in map if we don't want to override value in Map
+Lets say file already have K = "/leet/code" , V=2
+map.putIfAbsent("/leet/code", 3)
+Won't update the Map in this case as it already exist
+
+2. Use getOrDefault in map if we want
+to return default value in case key doesn't exist in Map
+map.getOrDefault(K, -1);

@@ -1,0 +1,50 @@
+@startuml
+hide footbox
+
+skinparam sequence {
+  ArrowColor black
+  LifeLineBorderColor blue
+  LifeLineBackgroundColor #B0D7FB
+  NoteBorderColor blue
+
+  ParticipantBorderColor blue
+  ParticipantBackgroundColor #B0D7FB
+  ParticipantFontSize 12
+
+  ActorBorderColor blue
+  ActorBackgroundColor #B0D7FB
+  ActorFontSize 12
+
+}
+
+participant User as user
+participant MarketPlace as merchant
+participant Akamai as waf
+participant OrderManagement as aqc
+participant Payment as payment
+participant Accounting as accounting
+participant RiskEngine as risk
+participant MerchantContract as contract
+participant LimitCenter as lc
+participant FeeCalculation as fee
+participant Settlement as settle
+participant Realtime as realtime
+participant Notification as notification
+collections msgBroker #B0D7FB
+
+autonumber
+
+== RELEASE Txn (Debit Escrow Account , Refill User WALLET again)\n <font color=green>Order return before delivery or Merchant couldn't deliver==
+merchant -> aqc : void on <font color=red>AcquiringId
+aqc ->aqc : Validations\nOrder status must be PAYING only\n Exceed Void not Allowed
+aqc -> payment : void
+payment -> accounting : Debit Escrow Account\nCredit User WALLET again
+accounting -> payment : SUCCESS
+payment -> msgBroker : SUCCESS_VOID_EVENT
+msgBroker --> aqc : listen SUCCESS_VOID_EVENT
+msgBroker --> lc : listen SUCCESS_VOID_EVENT
+lc -> lc : refill amount and count limits for particular user
+aqc -> aqc : mark Order as status=<font color=red>CLOSED\ncompose OrderVoidEVENT\n compose orderFailNotify
+aqc -> notification : orderFailNotify
+notification -> user : Order revoked, please place order again
+@enduml

@@ -73,8 +73,8 @@ public class PermutationString {
             results.add(prefix);
         } else {
             for (int i = 0; i < suffix.length(); i++) {
-                /*             ("","par")  suffix ="par"
-                     i=0       ("p","ar")   suffix ="ar"
+                /*    i=0         ("","par")  suffix ="par"
+                     i=0       ("p","ar") i=1  suffix ="ar"
                      i=0   ("pa","r")    ("pr","a")     suffix ="r"
                     i=0 ("par","")          ("pra","")      suffix =""
 
@@ -94,7 +94,7 @@ public class PermutationString {
     }
 
     public static void main(String[] args) {
-        new PermutationString().permutation("par");
+        new PermutationString().permutation("para");
         //new PermutationString().permutationSwap("par");
     }
 }

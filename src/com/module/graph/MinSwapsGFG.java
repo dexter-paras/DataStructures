@@ -96,7 +96,7 @@ class MinSwaps {
 
 // Driver class
 public class MinSwapsGFG {
-    // Driver program to test the above function
+    // Driver program to airasia the above function
     public static void main(String[] args) {
         int[] a = {1, 5, 4, 3, 2};
         MinSwaps g = new MinSwaps();

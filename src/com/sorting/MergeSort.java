@@ -13,6 +13,9 @@ import java.util.Arrays;
  * https://www.geeksforgeeks.org/merge-sort/
  * Amazing Solution
  * https://leetcode.com/problems/sort-an-array/discuss/276463/Java-QuickSort-%2B-SelectionSort-%2B-MergeSort-summary
+    It is characterized by 2 major subroutines:
+    split(T[] arr): The split subroutine splits an array in half and recursively sorts the left and right halves. They are later merged in the merge subroutine
+    merge(T[] left, T[] right): The merge subroutine merges two sorted sequences in O(len(left) + len(right)) time (overarchingly O(n) time with respect to the original input size)
  */
 public class MergeSort {
 

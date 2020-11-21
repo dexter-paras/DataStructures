@@ -9,12 +9,28 @@ import java.util.Map;
 /**
  * @author paras.chawla
  * @version $Id: LRUCache.java, v 0.1 2020-10-01 15:32 paras.chawla Exp $$
+ *
+ * Map deals with Keys only
+ * DLL deals with Values and next and previous Nodes
+ * capacity = 4
+ *              Map K       V                      DLL
+ * put(1,5) ->      1   ListNode1(5,n,p)           LN1->null
+ * put(2,6) ->      2   ListNode2(6,n,LN1)         LN2->LN1->null
+ * put(3,7) ->      3   ListNode3(7,n,LN2)         LN3-> LN2->LN1->null
+ * put(4,8) ->      4   ListNode4(8,n,LN3)         LN4->LN3-> LN2->LN1->null
+ * get(2)   ->  get(4) -> LN4 -> 8                 LN2->LN4->LN3->LN1->null
+ * put(5,10)->      5   ListNode5(10,n,p)          Evict Tail Node  LN2->LN4->LN3->null
+ *                           Add new node in front LN5->LN2->LN4->LN3->null
  */
+
 public class LRUCache {
 
+    // Key - Integer ; Value as ListNode stored in DLL
     Map<Integer, ListNode> hashtable = new HashMap<>();
-    ListNode               head;
-    ListNode               tail;
+
+    // Doubly Linked List
+    ListNode head;
+    ListNode tail;
 
     int totalItemsInCache;
     int capacity;

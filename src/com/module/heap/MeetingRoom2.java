@@ -94,6 +94,12 @@ public class MeetingRoom2 {
         }
 
         // sort list based on start time of meeting
+        Arrays.sort(intervals, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return 0;
+            }
+        });
         Arrays.sort(intervals, ((int[] a, int[] b) -> a[0] - b[0]));
 
         // Create a min-heap storing least end time in order

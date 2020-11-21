@@ -74,6 +74,21 @@ public class FindPathInMatrix {
         path.remove(path.size() - 1);
         return false;
     }
+    /*  0 1 2 3 4
+     0  B B B B W
+     1  B B B B B
+     2  W B W B W
+     3  W B W B W
+     4  W W W B W
+
+     00-01-11-12-13-14
+     dfs(maze, start ,end)
+        - base condition when start==end
+        - path.add(start);
+        - for(all directions)
+        - update start based on direction
+        - if(dfs(maze, new start, end)) return true;
+     */
 
     public static void main(String[] args) {
         FindPathInMatrix obj = new FindPathInMatrix();

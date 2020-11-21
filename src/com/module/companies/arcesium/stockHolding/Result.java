@@ -4,7 +4,7 @@
  */
 package com.module.companies.arcesium.stockHolding;
 
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -96,8 +96,8 @@ public class Result {
             Scanner s = new Scanner(conn.getInputStream()).useDelimiter("\\A");
             String jsonString = s.hasNext() ? s.next() : "";
 
-            Gson g = new Gson();
-            holdingDetails = g.fromJson(jsonString, HoldingDetails.class);
+            //Gson g = new Gson();
+            //holdingDetails = g.fromJson(jsonString, HoldingDetails.class);
             conn.disconnect();
         } catch (Exception e) {
             System.out.println("Exception in NetClientGet:- " + e);
@@ -123,8 +123,8 @@ public class Result {
             Scanner s = new Scanner(conn.getInputStream()).useDelimiter("\\A");
             String jsonString = s.hasNext() ? s.next() : "";
 
-            Gson g = new Gson();
-            holdingPriceDetails = g.fromJson(jsonString, HoldingPriceDetails.class);
+            //Gson g = new Gson();
+            //holdingPriceDetails = g.fromJson(jsonString, HoldingPriceDetails.class);
             conn.disconnect();
         } catch (Exception e) {
             System.out.println("Exception in NetClientGet:- " + e);

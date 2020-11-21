@@ -10,10 +10,11 @@ import java.util.Queue;
 
 /**
  * @author paras.chawla
- * @version $Id: CourseScheduler.java, v 0.1 2020-09-17 20:45 paras.chawla Exp $$
+ * @version $Id: CourseScheduler.java, v 0.1 2020-09-17 20:45 paras.chawla Exp $$ https://leetcode.com/problems/course-schedule/
  */
 public class CourseScheduler {
 
+    // https://www.youtube.com/watch?v=Zuwp40mT66c
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         Graph graph = new Graph(numCourses);
 
@@ -23,8 +24,9 @@ public class CourseScheduler {
         }
 
         // global visited array - to check if cyclic from all vertices
+        // store already visited nodes with no cycle found last time if true
         boolean[] visited = new boolean[numCourses];
-        // current visited array - to check if current traversal from vertex V involves cycle or not
+        // current visited array in current dfs traversal - to check if current traversal from vertex V involves cycle or not
         boolean[] recStack = new boolean[numCourses];
 
         // detect cycle from each vertex/course
@@ -84,6 +86,8 @@ public class CourseScheduler {
     // Approach 2 - BFS solution
     public boolean canFinishbfs(int numCourses, int[][] prerequisites) {
         ArrayList[] graph = new ArrayList[numCourses];
+
+        // number of in-degree arrows coming to vertex
         int[] degree = new int[numCourses];
         Queue queue = new LinkedList();
         int count = 0;
@@ -117,8 +121,10 @@ public class CourseScheduler {
 
     public static void main(String[] args) {
         CourseScheduler obj = new CourseScheduler();
-        System.out.println(obj.canFinishbfs(3, new int[][] {{0, 1}, {2, 1}, {2, 0}}));
-        System.out.println(obj.canFinish(3, new int[][] {{0, 1}, {2, 1}, {2, 0}}));
+        //System.out.println(obj.canFinishbfs(3, new int[][] {{0, 1}, {2, 1}, {2, 0}}));
+        //System.out.println(obj.canFinish(3, new int[][] {{0, 1}, {2, 1}, {2, 0}}));
+        //System.out.println(obj.canFinish(2, new int[][] {{0, 1},{1, 0}}));
+        System.out.println(obj.canFinishbfs(5, new int[][] {{0, 1}, {2, 1}, {4, 0}, {4, 2}, {4, 3}, {2, 3}}));
     }
 
 }
