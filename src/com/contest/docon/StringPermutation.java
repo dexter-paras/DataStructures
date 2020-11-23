@@ -1,7 +1,7 @@
 /**
  * Alipay.com Inc. Copyright (c) 2004-2020 All Rights Reserved.
  */
-package com.docon;
+package com.contest.docon;
 
 import java.util.ArrayList;
 import java.util.List;

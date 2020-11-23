@@ -1,0 +1,9 @@
+There are two ways to run Generic Cache
+1) Run org/gojek/cachelib/Main.java
+2) Run org.gojek.cachelib.test.CacheTest.java
+
+Expectations:
+- Code should be functionally correct.
+- Code should be modular and readable. Clean and professional level code.
+- Code should be extensible and scalable. Means it should be able to accommodate new requirements with minimal changes.
+- Code should have good OOPs design.

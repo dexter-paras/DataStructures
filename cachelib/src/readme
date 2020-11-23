@@ -1,0 +1,32 @@
+EvictionPolicyStrategy
+    - LRUStrategy
+        - DS
+    - evict()
+    - accessed(k2)
+
+Driver class
+
+    Cache
+        - int capacity
+        - EvictionPolicyStrategy evictionPolicy
+
+        -- get(K)
+        -- put(K,V)
+
+
+-- LRU
+    capacity =5
+    size < 5 -> get DS
+    size >5 -> removing element from tail of DLL/map
+
+    put(K,V)
+
+    Map<Node,Node>
+        k1, Node
+        k2, Node
+
+    DLL
+    head ->k2 -> k1
+
+
+

@@ -1,0 +1,41 @@
+@startuml
+hide footbox
+
+skinparam sequence {
+  ArrowColor black
+  LifeLineBorderColor blue
+  LifeLineBackgroundColor #B0D7FB
+  NoteBorderColor blue
+
+  ParticipantBorderColor blue
+  ParticipantBackgroundColor #B0D7FB
+  ParticipantFontSize 12
+
+  ActorBorderColor blue
+  ActorBackgroundColor #B0D7FB
+  ActorFontSize 12
+
+}
+autonumber
+
+participant Subscriber as subs
+participant CFT as cft
+participant Compliance as comp
+
+subs -> cft : Create enrollment
+comp -> cft : Access Enrollment details
+comp -> comp : Start Validation
+
+alt if <font color=green>validation == SUCCESS
+cft -> cft : Enrollment activated
+else if <font color=red>validation == FAIL
+comp -> subs : Escalation raised
+subs -> subs : rectify mismatch details\nupload required docs
+end
+
+comp -> comp : Updated details in compliance queue
+comp -> comp :Continue with step 4 till it get SUCCESS & Activated
+
+autonumber
+
+@enduml
