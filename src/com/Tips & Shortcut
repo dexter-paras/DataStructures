@@ -6,3 +6,23 @@ Won't update the Map in this case as it already exist
 2. Use getOrDefault in map if we want
 to return default value in case key doesn't exist in Map
 map.getOrDefault(K, -1);
+
+3. Map Frequency
+for (String token : tokens) {
+    map.put(token, map.getOrDefault(token,0)+1);
+}
+
+-----------------------------------------------------------------------
+
+Why DFS can't be used for shortest distance on graph, but works on tree
+https://codeforces.com/blog/entry/16479
+
+DataStructures FACT
+1) Always good to have BFS in order to find shortest distance in Graph
+
+2) Always good to have DFS in order to find shortest distance in Graph
+    Because in a tree you can reach a node in unique way.
+
+-----------------------------------------------------------------------
+1) Use String carefully when working with backtracking problems
+1.1) if using backtracking, use StringBuilder rather than String

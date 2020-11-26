@@ -18,12 +18,7 @@ public class FirstUniqueNumber {
 
     void createMap(int[] array) {
         for (int i : array) {
-            if (map.containsKey(i)) {
-                int count = map.get(i);
-                map.put(i, count + 1);
-            } else {
-                map.put(i, 1);
-            }
+            map.put(i, map.getOrDefault(i, 0) + 1);
         }
     }
 
