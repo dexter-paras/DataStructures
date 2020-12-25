@@ -33,17 +33,21 @@ public class AutoCompleteSystem {
         }
     }
 
+    // sentence = "i love you" , time = 5
     private void addSentence(String sentence, int time) {
         TrieNode currNode = root;
 
-        // sentence = "paras", count = 3
+        // sentence = "i love you", count = 5
         for (char ch : sentence.toCharArray()) {
             int idx = ch - 'a';
             if (currNode.adjacent[idx] == null) {
                 currNode.adjacent[idx] = new TrieNode();
             }
-            // it could be possible that "paras",3 and "paras,4 come twice so count should be 7
+
+            // it could be possible that "paras",3 and "paras",4 come twice so count should be 7
+            // every character downstream is having Map<Sentence,Count>
             currNode.adjacent[idx].map.put(sentence, currNode.adjacent[idx].map.getOrDefault(sentence, 0) + time);
+
             //currNode.adjacent[idx].map.put(sentence,time) <-- incorrect , shouldn't override with same sentence
             currNode = currNode.adjacent[idx];
         }
@@ -57,7 +61,7 @@ public class AutoCompleteSystem {
         // 1. user finished the input, the sentence prefix should be saved as a historical sentence in system
         if (c == '#') {
             addSentence(prefix, 1);
-            // 1.1 set prefix as empty string and lets user initiate again
+            // 1.1 Reset prefix as empty string and lets user initiate again
             prefix = "";
             return result;
         }
@@ -86,6 +90,7 @@ public class AutoCompleteSystem {
         }
 
         // 5. poll only top 3 elements and return
+        // could be possible that maxHeap is having less than 2
         for (int i = 0; i < 3 && !maxHeap.isEmpty(); i++) {
             result.add((String) maxHeap.poll().sentence);
         }

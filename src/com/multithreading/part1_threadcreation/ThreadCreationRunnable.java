@@ -3,16 +3,15 @@
  */
 package com.multithreading.part1_threadcreation;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @author paras.chawla
- * @version $Id: ThreadCreationRunnable.java, v 0.1 2020-08-19 09:41 paras.chawla Exp $$
- * Threads Creation - Part 1.1, Using Runnable Interface
- * Approach 1 of Creating Thread
- *  * Declare a class that
- *  * implements the <code>Runnable</code> interface. That class then
- *  * implements the <code>run</code> method. An instance of the class can
- *  * then be allocated, passed as an argument when creating
- *  * <code>Thread</code>, and started.
+ * @version $Id: ThreadCreationRunnable.java, v 0.1 2020-08-19 09:41 paras.chawla Exp $$ Threads Creation - Part 1.1, Using Runnable
+ * Interface Approach 1 of Creating Thread * Declare a class that * implements the <code>Runnable</code> interface. That class then *
+ * implements the <code>run</code> method. An instance of the class can * then be allocated, passed as an argument when creating *
+ * <code>Thread</code>, and started.
  */
 public class ThreadCreationRunnable {
 
@@ -41,5 +40,7 @@ public class ThreadCreationRunnable {
         System.out.println("We are in thread: " + Thread.currentThread().getName() + " before starting a new thread");
         thread.start();
         System.out.println("We are in thread: " + Thread.currentThread().getName() + " after starting a new thread");
+
+
     }
 }

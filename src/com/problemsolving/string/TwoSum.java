@@ -3,7 +3,9 @@
  */
 package com.problemsolving.string;
 
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map;
 
 /**
  * @author paras.chawla
@@ -22,12 +24,37 @@ public class TwoSum {
             }
             hashTable.put(num, i);
         }
-        throw new IllegalArgumentException("no two Solution");
+        throw new IllegalArgumentException("no two InMemoryDataStructure");
+    }
+
+    public int[] twoSum2(int[] nums, int target) {
+
+        int[] result = new int[2];
+
+        // base condition
+        if (nums == null) {
+            return result;
+        }
+
+        // add into map <Value,Index>
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            map.putIfAbsent(nums[i], i);
+        }
+
+        // traversing again
+        for (int i = 0; i < nums.length; i++) {
+            if (map.containsKey(target - nums[i])) {
+                result[0] = map.get(target - nums[i]);
+                result[1] = i;
+            }
+        }
+        return result;
     }
 
     public static void main(String[] args) {
-        int array[] = {2, 7, 11, 15};
-        int[] ind = new TwoSum().twoSum(array, 9);
+        int array[] = {3, 3};
+        int[] ind = new TwoSum().twoSum2(array, 6);
         System.out.println(ind[0] + "\n" + ind[1]);
     }
 }

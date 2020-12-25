@@ -45,7 +45,25 @@ public class FindDuplicate {
         return result;
     }
 
+    public int findDuplicate(int[] nums) {
+
+        if (nums == null || nums.length == 0) {
+            return -1;
+        }
+
+        // nums[] = [1,3,4,2,2]
+        for (int i = 0; i < nums.length; i++) {
+
+            if (nums[nums[i] - 1] > 0) {
+                nums[nums[i] - 1] *= -1;
+            } else {
+                return nums[i];
+            }
+        }
+        return -1;
+    }
+
     public static void main(String[] args) {
-        new FindDuplicate().findDuplicates(new int[]{1,4,4,2,3,2});
+        new FindDuplicate().findDuplicate(new int[] {1, 3, 4, 2, 2});
     }
 }

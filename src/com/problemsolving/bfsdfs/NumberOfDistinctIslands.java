@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * @author paras.chawla
  * @version $Id: NumberOfIslands.java, v 0.1 2020-04-29 22:49 paras.chawla Exp $$ https://leetcode
- * .com/problems/number-of-distinct-islands/discuss/237859/Simple-Java-Solution!
+ * .com/problems/number-of-distinct-islands/discuss/237859/Simple-Java-InMemoryDataStructure!
  */
 public class NumberOfDistinctIslands {
 

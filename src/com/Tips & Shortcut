@@ -1,3 +1,8 @@
+Practice
+Jump Game -1 https://leetcode.com/problems/jump-game/
+
+
+-----------------------HASHMAP FACTS-----------------------------------
 1. Use putIfAbsent in map if we don't want to override value in Map
 Lets say file already have K = "/leet/code" , V=2
 map.putIfAbsent("/leet/code", 3)
@@ -12,8 +17,7 @@ for (String token : tokens) {
     map.put(token, map.getOrDefault(token,0)+1);
 }
 
------------------------------------------------------------------------
-
+-----------------------DFS FACTS----------------------------------------
 Why DFS can't be used for shortest distance on graph, but works on tree
 https://codeforces.com/blog/entry/16479
 
@@ -23,6 +27,49 @@ DataStructures FACT
 2) Always good to have DFS in order to find shortest distance in Graph
     Because in a tree you can reach a node in unique way.
 
------------------------------------------------------------------------
+-------------------------------BACKTRACKING TECHNIQUE------------------
 1) Use String carefully when working with backtracking problems
 1.1) if using backtracking, use StringBuilder rather than String
+
+-------------------------------TWO POINTER-----------------------------
+1) Two Pointer used mostly when array is Sorted, then only we can shrink
+to right or left
+2) To reduce complexity from O(n^2) to O(nlogn) - Sort the array
+3) In 2 Pointer approach, its possible where num[low]+ num[high] gets overflow beyond target
+
+I think it will cause an issue. Think about what if numbers[0] + numbers[numbers.size() - 1] overflows.
+Numbers[low] + numbers[high] == target should be replaced with target - numbers[low] == numbers[high]
+
+
+--------------------------SUBSTRING/SUBARRAY/SUBSEQUENCE----------------
+Reference - https://quanticdev.com/algorithms/primitives/subarray-vs-substring-vs-subsequence-vs-subset/#:~:text=In%20addition%2C%20all%20of%20subarrays,elements%20appear%20in%20any%20order.
+1) Subarray
+A subarray is a contiguous sequence of elements within an array.
+For instance, the subarrays of the array {1, 2, 1} would be {1}, {2}, {1, 2}, {2, 1}, {1, 2, 1}, {}.
+
+Subarray = n*(n+1)/2
+
+2) SubString
+A substring is exactly the same thing as a subarray but in the context of strings.
+For instance, the substrings of the string "abc" would be "","a", "b", "c", "ab", "bc", "abc".
+
+SubString = n*(n+1)/2
+
+3) Subsequence
+Both in mathematics and computer science, a subsequence is a sequence that can be derived from another sequence
+by deleting some or no elements without changing the order of the remaining elements.
+
+This means a subsequence is a generalized subarray, where the rule of contiguity does not apply.
+For instance, the subsequences of the sequence <A, B, A> would be <A>, <B>, <A, B>, <B, A>, <A, A>, <A, B, A>, <>.
+
+Subseqeunce = (2^n) -1 (non-empty subsequences)
+
+4)Subset
+A set is subset of another set if all its elements are contained by that set. This means, neither contiguity nor ordering of elements matter.
+For instance, the subsets of the set {1, 2, 3} would be {1}, {2}, {3}, {1, 2}, {1, 3}, {2, 3}, {1, 2, 3}, {}.
+
+Subsets do not need to preserve element order. As a result, both {1, 2} and {2, 1} represent the same subset.
+
+Note on Sets: Unlike arrays, strings, and sequences, sets do not allow duplicate elements. As a result, {1, 2, 1} would not be a valid set.
+
+Subset = 2^n

@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author paras.chawla
- * @version $Id: NonAtomicIncrementResourceSharing.java, v 0.1 2020-08-27 21:51 paras.chawla Exp $$
+ * @version $Id: AtomicIncrementResourceSharing.java, v 0.1 2020-08-27 21:51 paras.chawla Exp $$
  */
 
 /* Here we're sharing an object btw 2 threads
@@ -53,7 +53,7 @@ public class AtomicIncrementResourceSharing {
         }
     }
 
-    // 2. Thread 1 having access of InventoryCounter object
+    // 2. Thread 1 having access of InventoryCounter object running only increment() and not decrement()
     public static class IncrementingThread extends Thread {
 
         private InventoryCounter inventoryCounter;

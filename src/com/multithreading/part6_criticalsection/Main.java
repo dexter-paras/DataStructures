@@ -26,7 +26,7 @@ DEADLOCK CONDITIONS:
 3. Non-preemptive allocation -No thread can take another thread taken resource. A resource is released only after thread is done using it.
 4. Circular wait - 1 thread waiting for resource taken by another thread
 
-DEADLOCK Solution
+DEADLOCK InMemoryDataStructure
 Enforcing a strict order on lock acquisition prevent deadlocks
  */
 

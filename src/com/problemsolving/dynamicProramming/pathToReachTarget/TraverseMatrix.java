@@ -42,13 +42,13 @@ public class TraverseMatrix {
 
         // marking row1 as 1
         // number of unique ways to move from 00 to 01 or 01 to 02 or 02 to 03 is 1 only as we can only move right
-        for (int i = 0; i < matrix.length; i++) {
+        for (int i = 0; i < matrix[0].length; i++) {
             matrix[0][i] = 1;
         }
 
         // marking col1 as 1
         // number of unique ways to move from 00 to 10 or 10 to 20 or 20 to 30 is 1 only as we can only move down
-        for (int i = 0; i < matrix[0].length; i++) {
+        for (int i = 0; i < matrix.length; i++) {
             matrix[i][0] = 1;
         }
 
@@ -59,16 +59,16 @@ public class TraverseMatrix {
             }
         }
 
-        return matrix[rows - 1][cols - 1];
+        return matrix[matrix.length - 1][matrix[0].length - 1];
     }
 
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
-        System.out.println(new TraverseMatrix().uniquePaths(10, 10));
+        System.out.println(new TraverseMatrix().uniquePaths(3, 7));
         long endTime = System.currentTimeMillis();
         System.out.println("Time Taken using Recursion: " + (endTime - startTime));
 
-        System.out.println(new TraverseMatrix().uniquePathsUsingDP(10, 10));
+        System.out.println(new TraverseMatrix().uniquePathsUsingDP(3, 7));
         long endTime2 = System.currentTimeMillis();
         System.out.println("Time Taken using DP: " + (endTime2 - endTime));
     }

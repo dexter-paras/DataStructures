@@ -11,7 +11,7 @@ import java.util.Arrays;
  * <p>
  * 2 subroutines 1. Split till base case is left with 1 element 2. merge left and right sorted Array
  * https://www.geeksforgeeks.org/merge-sort/
- * Amazing Solution
+ * Amazing InMemoryDataStructure
  * https://leetcode.com/problems/sort-an-array/discuss/276463/Java-QuickSort-%2B-SelectionSort-%2B-MergeSort-summary
     It is characterized by 2 major subroutines:
     split(T[] arr): The split subroutine splits an array in half and recursively sorts the left and right halves. They are later merged in the merge subroutine

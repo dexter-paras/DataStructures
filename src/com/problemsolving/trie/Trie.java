@@ -95,7 +95,7 @@ class Trie {
     private void helperFindAllWords(TrieNode curNode, List<String> result, StringBuilder prefix) {
         if (curNode.end) {
             result.add(new String(prefix));
-            return;
+            //return;
         }
 
         TrieNode[] adjacents = curNode.adjacent;

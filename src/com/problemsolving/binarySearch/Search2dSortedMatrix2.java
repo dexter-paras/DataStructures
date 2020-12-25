@@ -7,8 +7,8 @@ package com.problemsolving.binarySearch;
  * @author paras.chawla
  * @version $Id: Search2dSortedMatrix2.java, v 0.1 2020-10-28 11:08 paras.chawla Exp $$
  * https://leetcode.com/problems/search-a-2d-matrix-ii/
- *  T  1    3   5   11 <- [0][3] 11<14 move down
- *     8    9  14   20 <- [1][3] 20 >14 move right
+ *  T  1    3   5   11 <- [0][3] 11 < 14 move down
+ *     8    9  14   20 <- [1][3] 20 > 14 move right
  *  B 10   15  21   30
  *    L             R
  * Constraints:
@@ -31,32 +31,32 @@ public class Search2dSortedMatrix2 {
         if (matrix == null || matrix.length == 0) {
             return false;
         }
-        return helper(matrix,0,matrix[0].length-1,target,matrix.length,matrix[0].length);
+        return helper(matrix, 0, matrix[0].length - 1, target, matrix.length, matrix[0].length);
     }
 
-    private boolean helper(int[][] matrix, int row, int col,int target,int numRows, int numCols) {
+    private boolean helper(int[][] matrix, int row, int col, int target, int numRows, int numCols) {
 
         // base condition
-        if(row<0 || row>=numRows || col<0 || col>=numCols){
+        if (row < 0 || row >= numRows || col < 0 || col >= numCols) {
             return false;
         }
 
         // nirvana condition
-        if(target==matrix[row][col]){
+        if (target == matrix[row][col]) {
             return true;
         }
         // move downwards to reduce space area,hence increase row++
-        if(target >matrix[row][col]){
+        if (target > matrix[row][col]) {
             row++;
-        }else if(target< matrix[row][col]){
+        } else if (target < matrix[row][col]) {
             col--;
         }
-        return helper(matrix,row,col,target,numRows,numCols);
+        return helper(matrix, row, col, target, numRows, numCols);
     }
 
     public static void main(String[] args) {
         Search2dSortedMatrix2 obj = new Search2dSortedMatrix2();
-        int[][] matrix = new int[][] {{1,4,7,11,15},{2,5,8,12,19},{3,6,9,16,22},{10,13,14,17,24},{18,21,23,26,30}};
+        int[][] matrix = new int[][] {{1, 4, 7, 11, 15}, {2, 5, 8, 12, 19}, {3, 6, 9, 16, 22}, {10, 13, 14, 17, 24}, {18, 21, 23, 26, 30}};
         int target = 20;
         obj.searchMatrix(matrix, target);
     }
