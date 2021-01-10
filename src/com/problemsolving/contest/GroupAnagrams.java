@@ -40,7 +40,7 @@ public class GroupAnagrams {
 
     /* Approach 2
      * Intent is to find same key for "abc" , "bca" , "cba"
-     * timeComplexity N*K , N(number of Strings) and K(max length of a String)
+     * timeComplexity NORTH*K , NORTH(number of Strings) and K(max length of a String)
      */
 
     public List<List<String>> groupAnagrams2(String[] strs) {

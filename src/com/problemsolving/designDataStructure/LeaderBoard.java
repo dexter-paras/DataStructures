@@ -41,7 +41,7 @@ public class LeaderBoard {
             // O(K) to construct the initial heap
             topScoreMinHeap.offer(entry.getValue());
 
-            // For the rest of the N-K elements, we perform the extractMin and
+            // For the rest of the NORTH-K elements, we perform the extractMin and
             // add operations on the heap each of which take (logK) time.
             if (topScoreMinHeap.size() > K) {
                 topScoreMinHeap.poll();

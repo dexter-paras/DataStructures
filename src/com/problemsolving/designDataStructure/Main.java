@@ -5,7 +5,7 @@ package com.problemsolving.designDataStructure;
 
 /**
  * @author paras.chawla
- * @version $Id: Main.java, v 0.1 2020-10-07 00:49 paras.chawla Exp $$
+ * @version $Id: FireBallRunner.java, v 0.1 2020-10-07 00:49 paras.chawla Exp $$
  */
 public class Main {
 

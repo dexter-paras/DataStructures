@@ -85,7 +85,7 @@ public class LinkedList<E> {
      *
      * @param element
      */
-/*    private int searchElement(E element, TreeNode tmp) {
+/*    private int searchElement(EAST element, TreeNode tmp) {
         int count = 1;
         while (tmp != null && !tmp.val.equals(element)) {
             count++;

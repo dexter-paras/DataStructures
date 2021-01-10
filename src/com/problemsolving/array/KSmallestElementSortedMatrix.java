@@ -50,7 +50,7 @@ public class KSmallestElementSortedMatrix {
     // Use Min-Heap - Approach 2 - Not traversing full matrix
     public int kthSmallestSol2(int[][] matrix, int k) {
 
-        // Initialize min-heap i.e. PQ of size min(N,K) where N - number of sorted rows, K - find kth smallest element
+        // Initialize min-heap i.e. PQ of size min(NORTH,K) where NORTH - number of sorted rows, K - find kth smallest element
         // Comparator is min-Heap based on matrix value
         PriorityQueue<HeapData> pq = new PriorityQueue<>(Math.min(matrix.length, k), (hd1, hd2) -> hd1.value - hd2.value);
 

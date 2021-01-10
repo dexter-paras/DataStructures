@@ -12,6 +12,9 @@ import java.util.List;
  * WHITE- unvisited vertex
  * GREY- In processing
  * BLACK - Visited and no cycle found
+ * graph = [GV[0] ,   GV[1],    GV[2],    GV[3] ,   GV[4]]
+ *          W        W      W       W       W
+ *          L<GV>   L<GV>   L<GV>   L<GV>   L<GV>
  */
 public class DetectCycleUsingColors {
 

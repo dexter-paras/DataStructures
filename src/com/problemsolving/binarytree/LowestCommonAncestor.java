@@ -38,11 +38,11 @@ public class LowestCommonAncestor {
     public static int lowestCommonAncestorOfBST(TreeNode root, int p, int q) {
 
         // 1. if both p and q smaller than root, call recursively to left of root node
-        if (p < (int) root.val && (int) q < (int) root.val) {
+        if (p < root.val && q < root.val) {
             return lowestCommonAncestorOfBST(root.left, p, q);
         }
         // 2. if both p and q greater than root, call recursively to right of root node
-        if ((int) p > (int) root.val && (int) q > (int) root.val) {
+        if (p > root.val && q > root.val) {
             return lowestCommonAncestorOfBST(root.right, p, q);
         }
         /*
@@ -50,7 +50,7 @@ public class LowestCommonAncestor {
          * OR
          * 4. One of x or y is less than root and the other is greater than root.
          */
-        return (int) root.val;
+        return root.val;
     }
 
     // Approach 2 - Using Recursion to find LCA of a BT
@@ -61,9 +61,14 @@ public class LowestCommonAncestor {
         findPath(root, p, path1);
         findPath(root, q, path2);
 
+        // path1 3->5
+        // path2 3->5->2->4
+
         int i;
         for (i = 0; i < path1.size() && i < path2.size(); i++) {
-            if (path1.get(i).val != (path2.get(i).val)) { break; }
+            if (path1.get(i).val != (path2.get(i).val)) {
+                break;
+            }
         }
 
         return path1.get(i - 1);
@@ -81,7 +86,7 @@ public class LowestCommonAncestor {
         path.add(root);
 
         //if node found, return true that path has been found
-        if ((int) root.val == (int) x.val) {
+        if (root.val == x.val) {
             return true;
         }
 

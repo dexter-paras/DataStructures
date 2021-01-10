@@ -14,48 +14,35 @@ import java.util.Stack;
 public class ZigZagTraversal {
 
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        List<List<Integer>> result = new ArrayList<>();
+        TreeNode c = root;
 
-        if (root == null) {
-            return result;
-        }
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        if (c == null) { return ans; }
 
         Stack<TreeNode> s1 = new Stack<TreeNode>();
         Stack<TreeNode> s2 = new Stack<TreeNode>();
-        s1.add(root);
 
-        while (!s1.isEmpty() || !s2.isEmpty()) {
-            List<Integer> currList = new ArrayList<>();
+        s1.push(root);
 
-            // Stack traversing from left to right i.e. s1 [3|2]
+        while (!s1.isEmpty()) {
+            List<Integer> tmp = new ArrayList<Integer>();
             while (!s1.isEmpty()) {
-                TreeNode currNode = s1.pop();
-                currList.add(currNode.val);
-                if (currNode.left != null) {
-                    s1.push(currNode.left);
-                }
-                if (currNode.right != null) {
-                    s1.push(currNode.right);
-                }
+                c = s1.pop();
+                tmp.add(c.val);
+                if (c.left != null) { s2.push(c.left); }
+                if (c.right != null) { s2.push(c.right); }
             }
-            result.add(currList);
-            currList = new ArrayList<>();
-
-            // Stack traversing from right to left i.e. s2 [4|5]
+            ans.add(tmp);
+            tmp = new ArrayList<Integer>();
             while (!s2.isEmpty()) {
-                TreeNode currNode = s2.pop();
-                currList.add(currNode.val);
-
-                if (currNode.right != null) {
-                    s2.push(currNode.right);
-                }
-                if (currNode.left != null) {
-                    s2.push(currNode.left);
-                }
+                c = s2.pop();
+                tmp.add(c.val);
+                if (c.right != null) { s1.push(c.right); }
+                if (c.left != null) { s1.push(c.left); }
             }
-            if (!currList.isEmpty()) { result.add(currList); }
+            if (!tmp.isEmpty()) { ans.add(tmp); }
         }
-        return result;
+        return ans;
     }
 
     public static void main(String[] args) {

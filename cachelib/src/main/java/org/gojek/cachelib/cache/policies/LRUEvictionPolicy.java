@@ -16,7 +16,7 @@ import java.util.Map;
 
 /**
  * Eviction policy based on LRU principle
- * - Need to manager Key only
+ * - Need to manage Keys only
  * - Values are managed by Cache only
  * - Doesn't deal with Capacity, Cache class deals with capacity
  */

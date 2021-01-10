@@ -7,8 +7,8 @@ package com.problemsolving.hardlc;
  * @author paras.chawla
  * @version $Id: TrappingRainWater.java, v 0.1 2020-10-19 14:08 paras.chawla Exp $$
  * https://www.youtube.com/watch?v=VZpJxINSvfs Appraoch 1   T(n^2)
- * https://www.youtube.com/watch?v=HmBbcDiJapY Approach 2   T(n) + S(n)
- * https://www.youtube.com/watch?v=XqTBrQYYUcc Approach 3   T(n) + S(1)
+ * https://www.youtube.com/watch?v=HmBbcDiJapY Approach 2   T(n) + SOUTH(n)
+ * https://www.youtube.com/watch?v=XqTBrQYYUcc Approach 3   T(n) + SOUTH(1)
  */
 public class TrappingRainWater {
 

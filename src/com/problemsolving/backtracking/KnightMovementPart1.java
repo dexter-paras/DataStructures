@@ -30,7 +30,7 @@ public class KnightMovementPart1 {
     private static int[] col = {-1, 1, 1, -1, 2, -2, 2, -2};
 
     public static void main(String[] args) {
-        // Chess of N*N
+        // Chess of NORTH*NORTH
         int N = 8;
 
         // Knight on 0,0 position

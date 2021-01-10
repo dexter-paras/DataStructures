@@ -3,7 +3,11 @@
  */
 package com.problemsolving.binarytree;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
@@ -26,6 +30,9 @@ public class BinaryTree<T> {
 
         // Create normal binary tree
         createBinaryTree(tree);
+
+        tree.levelOrder(tree.root);
+        tree.reverseLevelOrder(tree.root);
 
         System.out.println("Inorder Traversal before insertion");
         tree.inorderTraversal(tree.root);
@@ -94,6 +101,54 @@ public class BinaryTree<T> {
                 }
             }
         }
+    }
+
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+
+        if (root == null) {
+            return result;
+        }
+
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        traversal(root, 0, map);
+
+        for (int i = 0; i < map.size(); i++) {
+            result.add(i, map.get(i));
+        }
+        return result;
+    }
+
+    public List<List<Integer>> reverseLevelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+
+        if (root == null) {
+            return result;
+        }
+
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        traversal(root, 0, map);
+
+        for (int i = map.size()-1; i >= 0; i--) {
+            result.add(map.get(i));
+        }
+        return result;
+    }
+
+    void traversal(TreeNode root, int level, Map<Integer,List<Integer>> map){
+        if(root ==null){
+            return;
+        }
+        insertIntoMap(map,level,root);
+        traversal(root.left,level+1,map);
+        traversal(root.right,level+1,map);
+    }
+
+    void insertIntoMap(Map<Integer,List<Integer>> map, int level,TreeNode root){
+        if(!map.containsKey(level)){
+            map.put(level, new ArrayList<>());
+        }
+        map.get(level).add(root.val);
     }
 
     /* Binary tree which doesn't support any ordering of nodes *//*
@@ -303,13 +358,23 @@ target = 22
         tree.root.left.right.right.right = new TreeNode(3);
     }
 
+    /*
+    *     4
+    *   /  \
+    *  2    7
+    * / \  / \
+    *1  3 6  9
+    *
+    */
+
     public static void createBinarySearchTree(BinaryTree tree) {
         tree.root = new TreeNode(4);
         tree.root.left = new TreeNode(2);
         tree.root.right = new TreeNode(7);
         tree.root.left.left = new TreeNode(1);
         tree.root.left.right = new TreeNode(3);
-        tree.root.right.right = new TreeNode(6);
+        tree.root.right.left = new TreeNode(6);
+        tree.root.right.right = new TreeNode(9);
     }
 
     /*

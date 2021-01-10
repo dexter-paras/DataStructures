@@ -5,7 +5,7 @@ package com.contest.zupeek;
 
 /**
  * @author paras.chawla
- * @version $Id: Main.java, v 0.1 2020-09-06 21:04 paras.chawla Exp $$
+ * @version $Id: FireBallRunner.java, v 0.1 2020-09-06 21:04 paras.chawla Exp $$
  */
 class Parent
 {

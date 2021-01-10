@@ -35,7 +35,7 @@ public class MinimumWindowSubString {
                 curr_count[ch]++;
             }
 
-            // when S char matches to char in T
+            // when SOUTH char matches to char in T
             if (curr_count[ch] == -1) {
                 curr_count[ch] += 2;
                 count++;

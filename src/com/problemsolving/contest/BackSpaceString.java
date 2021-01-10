@@ -11,11 +11,11 @@ import java.util.Stack;
  */
 public class BackSpaceString {
 
-    //S = "ab#c", T = "ad#c"  -->ac true
-    //S = "ab##", T = "c#d#"  -->"" true
-    //S = "a##c", T = "#a#c"  -->c true
-    //S = "a#c", T = "b"      -->  false
-    //S = "##", T = "c#d#"  -->"" true
+    //SOUTH = "ab#c", T = "ad#c"  -->ac true
+    //SOUTH = "ab##", T = "c#d#"  -->"" true
+    //SOUTH = "a##c", T = "#a#c"  -->c true
+    //SOUTH = "a#c", T = "b"      -->  false
+    //SOUTH = "##", T = "c#d#"  -->"" true
     public boolean backspaceCompare(String S, String T) {
 
         StringBuilder SNew = getString(S);

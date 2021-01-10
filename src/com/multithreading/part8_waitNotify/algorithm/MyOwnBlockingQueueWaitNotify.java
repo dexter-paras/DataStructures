@@ -5,10 +5,11 @@ package com.multithreading.part8_waitNotify.algorithm;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * @author paras.chawla
- * @version $Id: MyOwnBlockingQueue.java, v 0.1 2020-11-27 02:39 paras.chawla Exp $$
+ * @version $Id: MyOwnBlockingQueueWaitNotify.java, v 0.1 2020-11-27 02:39 paras.chawla Exp $$
  * Use this and and not MyOwnBlockingQueue.class
  * Awesome read
  * https://stackoverflow.com/questions/2056243/java-synchronized-block-for-class
@@ -20,25 +21,26 @@ import java.util.Queue;
  * The first example (acquiring lock on this) is meant to be used in instance methods,
  * the second one (acquiring lock on class object) -- in static methods.
  */
-public class MyOwnBlockingQueue<E> implements Queuee<E> {
+public class MyOwnBlockingQueueWaitNotify<E> implements Queuee<E> {
 
     private Queue<E> queue;
     private int      capacity;
     private int      DEFAULT_SIZE = 16;
-    private Object lock = new Object();
 
-    public MyOwnBlockingQueue() {
+    // Blocking Queue of Default Size
+    public MyOwnBlockingQueueWaitNotify() {
         this.queue = new LinkedList<>();
         this.capacity = DEFAULT_SIZE;
     }
 
-    public MyOwnBlockingQueue(int capacity) {
+    // Blocking Queue of size = capacity
+    public MyOwnBlockingQueueWaitNotify(int capacity) {
         this.queue = new LinkedList<>();
         this.capacity = capacity;
     }
 
     // To maintain thread-safe , need to use synchronized
-    // when queue.size==full, and multiple threads are tring to put, we need to block producer thread
+    // when queue.size==full, and multiple threads are trying to put, we need to block producer thread
     // In Order to block producer thread, call wait()
     @Override
     public void put(E e) throws InterruptedException {

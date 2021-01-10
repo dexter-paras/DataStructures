@@ -33,7 +33,7 @@ public class KSmallestElement {
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
         BinaryTree.createBinarySearchTree(tree);
-        System.out.println(new KSmallestElement().kthSmallest(tree.root, 4));
+        System.out.println(new KSmallestElement().kthSmallestSol2(tree.root, 4));
     }
 
     private int inorderIterative(TreeNode root, List<Integer> result, int k) {
@@ -59,5 +59,36 @@ public class KSmallestElement {
             curr = node.right;
         }
         return 0;
+    }
+
+    /*
+     *     4
+     *   /  \
+     *  2    7
+     * / \  / \
+     *1  3 6  9
+     *
+     *
+     * k=3
+     */
+    public int kthSmallestSol2(TreeNode root, int k) {
+        Stack<TreeNode> stack = new Stack<>();
+
+        while (!stack.isEmpty() || root !=null) {
+
+            // 1. Keep going left just like recursive function going left
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+
+            // 2. when curr points to null and can't go further,remove node from stack
+            root = stack.pop();
+            if (--k == 0) {
+                return root.val;
+            }
+            root = root.right;
+        }
+        return -1;
     }
 }

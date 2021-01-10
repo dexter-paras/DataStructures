@@ -8,8 +8,8 @@ import java.util.Set;
 
 /**
  * @author paras.chawla
- * @version $Id: NumberOfIslands.java, v 0.1 2020-04-29 22:49 paras.chawla Exp $$ https://leetcode
- * .com/problems/number-of-distinct-islands/discuss/237859/Simple-Java-InMemoryDataStructure!
+ * @version $Id: NumberOfIslands.java, v 0.1 2020-04-29 22:49 paras.chawla Exp $$
+ * https://leetcode.com/problems/number-of-distinct-islands/discuss/237859/Simple-Java-InMemoryDataStructure!
  */
 public class NumberOfDistinctIslands {
 
@@ -18,7 +18,7 @@ public class NumberOfDistinctIslands {
       11000
       00100
       00011
-    If im at any piece of land,then that includes an Island
+    If i'm at any piece of land,then that includes an Island
     What we need to do is that recurring of that piece of land
     we need to mark all visited lands
 
@@ -76,19 +76,21 @@ public class NumberOfDistinctIslands {
         markVisited("L", builder, i, j - 1, grid, row, col); // LEFT
         markVisited("R", builder, i, j + 1, grid, row, col); // UP
 
-        //why backtracking as a moving direction is important https://leetcode
-        // .com/problems/number-of-distinct-islands/discuss/150037/DFS-with-Explanations
-        builder.append("E");
+        //why backtracking as a moving direction is important
+        // https://leetcode.com/problems/number-of-distinct-islands/discuss/150037/DFS-with-Explanations
+        builder.append("EAST");
     }
 
     public static void main(String[] args) {
-        int grid[][] = new int[][] {{1, 1, 0, 0, 0}, {1, 1, 0, 0, 0}, {0, 0, 0, 1, 1},
-                {0, 0, 0, 1, 1}};
+
+        NumberOfDistinctIslands obj = new NumberOfDistinctIslands();
+        int grid[][] = new int[][] {{1, 1, 0, 0, 1, 1, 0}, {1, 1, 0, 0, 0, 0, 1}, {0, 0, 1, 1, 0, 0, 0},
+                {1, 0, 1, 1, 0, 1, 1}};
         // both 2 cases require backtracking to append
         int trickyGrid1[][] = new int[][] {{1, 1, 1}, {0, 1, 0}};
         int trickyGrid2[][] = new int[][] {{1, 1, 0}, {0, 1, 1}};
-        //new NumberOfDistinctIslands().numIslands(grid);
-        new NumberOfDistinctIslands().numIslands(trickyGrid1);
-        new NumberOfDistinctIslands().numIslands(trickyGrid2);
+        obj.numIslands(grid);
+        obj.numIslands(trickyGrid1);
+        obj.numIslands(trickyGrid2);
     }
 }

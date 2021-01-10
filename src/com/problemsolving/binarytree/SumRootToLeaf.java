@@ -37,12 +37,12 @@ public class SumRootToLeaf {
         boolean isLeaf = node.left == null && node.right == null;
 
         // base condition ,when node is leaf node and target-node value comes to equal
-        if (isLeaf && (int) node.val == target) {
+        if (isLeaf && node.val == target) {
             return true;
         }
 
-        return hasPathSum(node.left, target - (int) node.val) ||
-                hasPathSum(node.right, target - (int) node.val);
+        return hasPathSum(node.left, target - node.val) ||
+                hasPathSum(node.right, target - node.val);
     }
 
     /*
@@ -118,14 +118,14 @@ target = 22
         if (root == null) {
             return;
         }
-        pathNodes.add((int) root.val);//5
+        pathNodes.add(root.val);//5
 
         boolean isLeaf = root.left == null && root.right == null;
-        if (isLeaf && (int) root.val == rSum) {
+        if (isLeaf && root.val == rSum) {
             pathsList.add(new ArrayList<>(pathNodes));
         } else {
-            recurseTree(root.left, rSum - (int) root.val, pathNodes, pathsList);
-            recurseTree(root.right, rSum - (int) root.val, pathNodes, pathsList);
+            recurseTree(root.left, rSum -root.val, pathNodes, pathsList);
+            recurseTree(root.right, rSum -root.val, pathNodes, pathsList);
         }
         pathNodes.remove(pathNodes.size() - 1);
     }
@@ -171,11 +171,11 @@ target = 22
             return;
         }
 
-        if ((int) root.val == rSum) {
+        if (root.val == rSum) {
             globalCount++;
         }
-        pathSumToTarget(root.left, rSum - (int) root.val);
-        pathSumToTarget(root.right, rSum - (int) root.val);
+        pathSumToTarget(root.left, rSum - root.val);
+        pathSumToTarget(root.right, rSum - root.val);
 
     }
 

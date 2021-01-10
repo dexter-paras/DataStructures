@@ -60,6 +60,6 @@ class VolatileThread extends Thread {
             counter++;
             System.out.println(counter);
         }
-        System.out.println("Volatile thread terminated since Main thread changes keepRunningFlag as true" + counter);
+        System.out.println("Volatile thread terminated since FireBallRunner thread changes keepRunningFlag as true" + counter);
     }
 }

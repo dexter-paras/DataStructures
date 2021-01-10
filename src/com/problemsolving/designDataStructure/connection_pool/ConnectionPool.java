@@ -27,10 +27,10 @@ public class ConnectionPool {
     // Thread-safe Queue with initial Pool size already cached during load-on-startup
     private BlockingQueue<Connection> pool;
 
-    // Maximum connetions already created and cached in queue
+    // Maximum connetions which can be created and cached in queue if required
     private int maxPoolSize;
 
-    // Initial Pool size given by client to create and cached in BlockingQueue
+    // Actual Initial Pool size given by client to create and cached in BlockingQueue
     private int initialPoolSize;
 
     // Number of Connections Generated so far
@@ -40,6 +40,8 @@ public class ConnectionPool {
     private String dbUser;
     private String dbPassword;
 
+    // 1. Load Driver class
+    // 2. Create Connection up to initialPoolSize and add into pool
     public ConnectionPool(int maxPoolSize, int initialPoolSize, String url, String userName,
                           String password, String driverClassName) throws ClassNotFoundException, SQLException {
 

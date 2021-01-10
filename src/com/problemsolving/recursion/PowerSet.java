@@ -29,14 +29,14 @@ public class PowerSet {
     }
 
     /*
-     *                 1
-     *            N /     \ Y
-     *                    2
-     *                N /    \ Y
-     *                         3
-     *                    N /   \ Y
-     *                            4
-     *                        N /    \ Y
+     *                      1
+     *            NORTH /     \ Y
+     *                        2
+     *                NORTH /    \ Y
+     *                            3
+     *                    NORTH /   \ Y
+     *                               4
+     *                        NORTH /    \ Y
      *                       {1,2,3}  {1,2,3,4}
      * */
 
@@ -91,7 +91,7 @@ public class PowerSet {
 
     public List<List<Integer>> subsetsUsingBitManipulation(int[] nums) {
         Arrays.sort(nums);
-        int totalNumber = 1 << nums.length;
+        int totalNumber = 1 << nums.length; // left shift 1 -> 3 times   0001(1) -> 1000(8)
         List<List<Integer>> collection = new ArrayList<List<Integer>>(totalNumber);
         for (int i = 0; i < totalNumber; i++) {
             List<Integer> set = new LinkedList<>();
@@ -124,6 +124,16 @@ public class PowerSet {
     [3]
     */
 
+    /*
+    *            ---
+    *   i=0 / i=1  \   i=2  \
+    *      1       2        3
+    * i=1/i=2 \     /
+    *   1,2  1,3  2,3
+    *i=2/
+    *  1,2,3
+    * */
+
     private void backtrack(List<List<Integer>> list, List<Integer> partialSubset, int[] nums, int idx) {
         list.add(new ArrayList<>(partialSubset));
         for (int i = idx; i < nums.length; i++) {
@@ -135,6 +145,6 @@ public class PowerSet {
 
     public static void main(String[] args) {
         PowerSet obj = new PowerSet();
-        System.out.println(obj.subsetsSol3(new int[] {1, 2, 3}));
+        System.out.println(obj.subsetsUsingBitManipulation(new int[] {1, 2, 3}));
     }
 }

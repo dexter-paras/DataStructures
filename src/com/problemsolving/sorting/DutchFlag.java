@@ -5,8 +5,11 @@ package com.problemsolving.sorting;
 
 /**
  * @author paras.chawla
- * @version $Id: DutchFlag.java, v 0.1 2020-12-01 11:16 paras.chawla Exp $$ https://www.youtube.com/watch?v=sEQk8xgjx64 Taking low, high as
- * 2 pointers and mid as pointer between 0s and 1s
+ * @version $Id: DutchFlag.java, v 0.1 2020-12-01 11:16 paras.chawla Exp $$ https://www.youtube.com/watch?v=sEQk8xgjx64
+ * Taking low, high as 2 pointers and mid as pointer between 0s and 1s
+ * Intent is to have 0s to left and 2s to right
+ * when a[mid]==0 , swap(mid,low) so as to fix 0 to the left and move low++
+ * when a[mid]==2 , swap(mid,high) so as to fix 2 to the right and move high--
  */
 public class DutchFlag {
 

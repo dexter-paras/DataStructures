@@ -18,20 +18,20 @@ public class DoublyNode {
         //^                ^
         //head             tail
 
-        //[E,S,W,N]
+        //[EAST,SOUTH,WEST,NORTH]
         // 0,1,2,3
 
-        // current dir= S
+        // current dir= SOUTH
         // if clause directionArray
-        // move(x,y,'L') ->(x,y,array[curDir-1]) -> x,y,E
-        // move(x,y,'R') ->(x,y,array[curDir+1]) -> x,y,W
+        // move(x,y,'L') ->(x,y,array[curDir-1]) -> x,y,EAST
+        // move(x,y,'R') ->(x,y,array[curDir+1]) -> x,y,WEST
         // move(x,y,'M') -> directionCheck ->
         //(5,5,x) -> move(x,y,M) -> no action
         //(x<0 || x>length|| y) ->no action
-        // N - y+1
-        // W - x-1
-        // S - y-1
-        // E - x+1
+        // NORTH - y+1
+        // WEST - x-1
+        // SOUTH - y-1
+        // EAST - x+1
     }
 
 }

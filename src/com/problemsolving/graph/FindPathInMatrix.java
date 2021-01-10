@@ -75,11 +75,11 @@ public class FindPathInMatrix {
         return false;
     }
     /*  0 1 2 3 4
-     0  B B B B W
+     0  B B B B WEST
      1  B B B B B
-     2  W B W B W
-     3  W B W B W
-     4  W W W B W
+     2  WEST B WEST B WEST
+     3  WEST B WEST B WEST
+     4  WEST WEST WEST B WEST
 
      00-01-11-12-13-14
      dfs(maze, start ,end)

@@ -89,7 +89,7 @@ public class CourseScheduler {
 
         // number of in-degree arrows coming to vertex
         int[] degree = new int[numCourses];
-        Queue queue = new LinkedList();
+        Queue<Integer> queue = new LinkedList();
         int count = 0;
 
         for (int i = 0; i < numCourses; i++) { graph[i] = new ArrayList(); }
@@ -106,7 +106,7 @@ public class CourseScheduler {
         }
 
         while (queue.size() != 0) {
-            int course = (int) queue.poll();
+            int course = queue.poll();
             for (int i = 0; i < graph[course].size(); i++) {
                 int pointer = (int) graph[course].get(i);
                 degree[pointer]--;

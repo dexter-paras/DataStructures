@@ -35,6 +35,8 @@ public class ValidBST {
         // print inorder
         tree.inorderTraversal(tree.root);
         // check if Valid BST
+        System.out.println("BST is valid or not: " + validateBST(tree.root,Integer.MIN_VALUE,Integer.MAX_VALUE));
+        // check if Valid BST
         System.out.println("BST is valid or not: " + checkValidBST(array));
         // check if Valid BST
         System.out.println("BST is valid or not: " + checkValidBSTWOExtraSpace(tree.root));
@@ -62,7 +64,7 @@ public class ValidBST {
     private static void copyBST(TreeNode root, int[] array) {
         if (root == null) { return; }
         copyBST(root.left, array);
-        array[index++] = (int) root.val;
+        array[index++] = root.val;
         copyBST(root.right, array);
     }
 
@@ -83,4 +85,29 @@ public class ValidBST {
 
         return true;//ALL GOOD
     }
+
+    /*
+      10   <- root
+    /   \
+   5    15
+  / \   / \
+ 2  8  12 20
+*/
+    private static boolean validateBST(TreeNode root, int min, int max) {
+
+        if (root == null) {
+            return true;
+        }
+
+        boolean bool = root.val > min && root.val < max;
+        if (!bool) {
+            return false;
+        }
+
+        boolean leftValidate= validateBST(root.left, min, root.val);
+        boolean rightValidate = validateBST(root.right, root.val, max);
+
+        return leftValidate && rightValidate;
+    }
+
 }

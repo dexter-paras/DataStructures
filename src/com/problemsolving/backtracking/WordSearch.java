@@ -9,15 +9,15 @@ package com.problemsolving.backtracking;
  * <p>
  * board =
  * [
- *   ['A','B','C','E'],
- *   ['S','F','C','S'],
- *   ['A','D','E','E']
+ *   ['A','B','C','EAST'],
+ *   ['SOUTH','F','C','SOUTH'],
+ *   ['A','D','EAST','EAST']
  * ]
  *
  * [
- *  ['A','B','C','E'],
- *  ['*','F','C','S'],
- *  ['A','D','E','E']
+ *  ['A','B','C','EAST'],
+ *  ['*','F','C','SOUTH'],
+ *  ['A','D','EAST','EAST']
  *  ]
  *
  * word = "ABCCED", return true word = "SEE", return

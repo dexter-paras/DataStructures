@@ -3,18 +3,19 @@
  */
 package com.multithreading.part8_waitNotify.blockingQueueUsingWaitNotify;
 
-import com.multithreading.part8_waitNotify.algorithm.MyOwnBlockingQueue;
+import com.multithreading.part8_waitNotify.algorithm.MyOwnBlockingQueueCondition;
 import com.multithreading.part8_waitNotify.algorithm.Queuee;
 
 /**
  * @author paras.chawla
- * @version $Id: ProducerConsumerWaitNotify.java, v 0.1 2020-11-27 02:31 paras.chawla Exp $$
+ * @version $Id: ProducerConsumer.java, v 0.1 2020-11-27 02:31 paras.chawla Exp $$
  */
-public class ProducerConsumerWaitNotify {
+public class ProducerConsumer {
 
     public static void main(String[] args) throws InterruptedException {
+
         // Handles concurrent thread access from single thread-safe queue
-        Queuee<Integer> queue = new MyOwnBlockingQueue(100);
+        Queuee<Integer> queue = new MyOwnBlockingQueueCondition<>(100);
 
         // producer task, producing messages
         Runnable producer = () -> {
@@ -65,7 +66,7 @@ public class ProducerConsumerWaitNotify {
 
         producerThread.join();
         consumerThread1.join();
-        consumerThread2.join();
+        //consumerThread2.join();
 
         System.out.println("All Messages Produced , Consumed and Finished");
     }

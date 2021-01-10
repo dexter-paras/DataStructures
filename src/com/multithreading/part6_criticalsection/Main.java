@@ -7,7 +7,7 @@ import java.util.Random;
 
 /**
  * @author paras.chawla
- * @version $Id: Main.java, v 0.1 2020-09-01 22:22 paras.chawla Exp $$
+ * @version $Id: FireBallRunner.java, v 0.1 2020-09-01 22:22 paras.chawla Exp $$
  */
 
 /* DEADLOCK

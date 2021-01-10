@@ -1,32 +1,47 @@
-EvictionPolicyStrategy
-    - LRUStrategy
-        - DS
-    - evict()
-    - accessed(k2)
+Points to remember:
+1) whenever there is get or put operation on Cache,
+driver class will call EvictionPolicy keyAccessed() so that
+evictionPolicy will update the positioning of key based on EvictionPolicy
+implementation
 
+2) when Storage is full during put(K,V), Driver class will call
+evictKey() of EvictionPolicy and system will evict Key based on Implementation
+
+---------------------------------------------
 Driver class
 
-    Cache
-        - int capacity
-        - EvictionPolicyStrategy evictionPolicy
+    Cache<K,V>
+        - Storage<K,V>
+        - EvictionPolicy<K>
 
-        -- get(K)
-        -- put(K,V)
+            -- get(K key)
+            -- put(K key,V value)
 
+---------------------------------------------
+Interface
 
--- LRU
-    capacity =5
-    size < 5 -> get DS
-    size >5 -> removing element from tail of DLL/map
+   EvictionPolicy<K>
 
-    put(K,V)
+        -- keyAccessed(K key)
+        -- K evictKey()
 
-    Map<Node,Node>
-        k1, Node
-        k2, Node
+---------------------------------------------
+Deals with Keys only, since all Impl classes differ in positioning
+of Keys
 
-    DLL
-    head ->k2 -> k1
+LRUEvictionPolicy<K>
+        - DoublyLinkedList<DoublyNode> dll;
+        - HashMap<K, DoublyNode<K>> hashMap;
+            -- keyAccessed(K key)
+            -- K evictKey()
 
+---------------------------------------------
+DoublyLinkedList<E>
+        --  DoublyNode<E> dummyHead;
+        --  DoublyNode<E> dummyTail;
 
+DoublyNode<E>
 
+        --  DoublyNode<E> prev;
+        --  DoublyNode<E> next;
+        --  E             element;

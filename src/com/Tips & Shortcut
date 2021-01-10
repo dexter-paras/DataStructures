@@ -1,6 +1,8 @@
 Practice
 Jump Game -1 https://leetcode.com/problems/jump-game/
 
+Solve Compression by 30th Dec EOD - 15 mins to code
+https://leetcode.com/problems/string-compression/
 
 -----------------------HASHMAP FACTS-----------------------------------
 1. Use putIfAbsent in map if we don't want to override value in Map
@@ -73,3 +75,11 @@ Subsets do not need to preserve element order. As a result, both {1, 2} and {2, 
 Note on Sets: Unlike arrays, strings, and sequences, sets do not allow duplicate elements. As a result, {1, 2, 1} would not be a valid set.
 
 Subset = 2^n
+
+-----------------------Indexing in Array------------------
+1) when program demands to traverse array elements again and again , store elements in array in HashMap
+Map<Value,Index> from Array[Values]
+It'll save TC but increase SC
+
+2) If global indexing in recursion isn't asked, we should store all elements in array in Queue and queue
+will take care of indexing by itself

@@ -48,8 +48,7 @@ public class Cache<K, V> {
             this.evictionPolicy.keyAccessed(key);
             return value;
         } catch (KeyNotFoundException e) {
-            System.out.println("Tried to access non-existing key "+ key);
-            return null;
+            throw e;
         }
     }
 }

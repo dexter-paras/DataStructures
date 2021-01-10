@@ -5,7 +5,7 @@ package com.designpattern.singleton;
 
 /**
  * @author paras.chawla
- * @version $Id: Main.java, v 0.1 2020-10-02 00:04 paras.chawla Exp $$
+ * @version $Id: FireBallRunner.java, v 0.1 2020-10-02 00:04 paras.chawla Exp $$
  */
 public class Main {
 

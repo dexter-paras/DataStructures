@@ -32,7 +32,7 @@ public class NumberOfIslands {
        00011  <- 3rd
     */
 
-    // Approach 1 - Using DFS TC O(M*N)
+    // Approach 1 - Using DFS TC O(M*NORTH)
     public int numIslands(char[][] grid) {
 
         if (grid == null || grid.length == 0) {

@@ -25,16 +25,18 @@ public class NextGreaterElement {
         int[] result = new int[nums.length];
         Arrays.fill(result, -1);
 
-        for (int i = 0; i < nums.length; i++) {
-            while (!stack.isEmpty() && nums[stack.peek()] < nums[i]) {
-                result[stack.pop()] = nums[i];
+        for (int idx = 0; idx < nums.length; idx++) {
+            while (!stack.isEmpty() && nums[stack.peek()] < nums[idx]) {
+                result[stack.pop()] = nums[idx];
             }
-            stack.push(i);
+            stack.push(idx);
         }
         return result;
     }
 
     // Variant 2 - Circular array
+    //array[] = [60,40,20,90,10,50, 60,40,20,90,10,50]
+
     public static int[] nextGreaterElementsCircularArray(int[] nums) {
 
         if (nums == null || nums.length == 0) {
@@ -72,7 +74,9 @@ public class NextGreaterElement {
         return res;
     }
 
-    public int[] nextGreaterElements3(int[] nums) {
+    //nums[] = 60, 40, 20, 90, 10, 50
+    //stack = 5 , 4,  3 , 2,  1 , 0
+    public static int[] nextGreaterElements3(int[] nums) {
         int[] results = new int[nums.length];
 
         int n = nums.length;
@@ -99,7 +103,7 @@ public class NextGreaterElement {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(nextGreaterElementsCircularArray(new int[] {60, 40, 20, 90, 10, 50})));
+        System.out.println(Arrays.toString(nextGreaterElements3(new int[] {60, 40, 20, 90, 10, 50})));
         //output 100, 140, -1, 100, 100, 60
     }
 }

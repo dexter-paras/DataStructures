@@ -20,11 +20,11 @@ import java.util.Set;
  * 1) Always good to have BFS in order to find shortest distance in Graph
  * 2) Always good to have DFS in order to find shortest distance in Graph
  *
- * TC O(26*N*N*W)
- * N - Number of characters in String
- * 26*N - Number of transformations happening in a string of N characters
- * 26*N*N - Comparison with endWord string ( String comparison is O(N))
- * W - Number of Words in the BFS call
+ * TC O(26*NORTH*NORTH*WEST)
+ * NORTH - Number of characters in String
+ * 26*NORTH - Number of transformations happening in a string of NORTH characters
+ * 26*NORTH*NORTH - Comparison with endWord string ( String comparison is O(NORTH))
+ * WEST - Number of Words in the BFS call
  */
 public class WordLadder {
 
