@@ -24,7 +24,7 @@ package com.problemsolving.backtracking;
  * true
  */
 
-/*Pseudo thoughts
+/* Pseudo thoughts
  * start with board[0][0] and check if char matches with word.charAt(0)
  * if matches->move all directions board[i++][j] ,board[i--][j], board[i][j++], board[i][j--]
  * Make sure to traverse in all 4 directions adding index + 1
@@ -51,7 +51,18 @@ public class WordSearch {
         return false;
     }
 
-    //                           0,     0,     3  ,       4,         0,     [][] board,       "ABCCED"
+    /*Time Complexity:O(N⋅3^L)
+    where N is the number of cells in the board and L is the length of the word to be matched.
+
+    For the backtracking function, initially we could have at most 4 directions to explore, but further the choices are reduced into 3 (since we won't go back to where we come from).
+    As a result, the execution trace after the first step could be visualized as a 3-ary tree, each of the branches represent a potential exploration in the corresponding direction. Therefore, in the worst case,
+    the total number of invocation would be the number of nodes in a full 3-nary tree, which is about 3^L
+
+    We iterate through the board for backtracking, i.e. there could be N times invocation for the backtracking function in the worst case.
+
+    As a result, overall the time complexity of the algorithm would be O(N*3^L)
+    */
+    //                           0,     0,     3  ,       4,         0,     [][] board,       "DOG"
     private boolean traverse(int i, int j, int row, int col, int index, char[][] board, String word) {
 
         // when word found
@@ -63,7 +74,8 @@ public class WordSearch {
             return false;
         }
 
-        // this is super important to mark visited character as * , if not -> in case of ABCB , it will return true which is incorrect
+        // this is super important to mark visited character as * , if not -> in case of DOD , it will return true which is incorrect
+        // need to mark visited char so that same can't be backtracked
         board[i][j] = '*';
         //Appraoch 2 - board[i][j] ^= 256;
         boolean exist = traverse(i + 1, j, row, col, index + 1, board, word) // Down (1,0,3,4,1,board,word) //'A' -> NA
@@ -78,8 +90,8 @@ public class WordSearch {
 
     public static void main(String[] args) {
 
-        char[][] board = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
-        System.out.println(new WordSearch().exist(board, "SEE"));
+        char[][] board = {{'A', 'B', 'C', 'E'}, {'D', 'O', 'G', 'F'}, {'P', 'X', 'E', 'T'}};
+        System.out.println(new WordSearch().exist(board, "DOD"));
         //System.out.println(new WordSearch().exist(board, "ABCCED"));
         //System.out.println(new WordSearch().exist(board, "ABCB"));
     }

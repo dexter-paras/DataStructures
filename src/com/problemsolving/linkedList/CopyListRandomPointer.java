@@ -31,6 +31,7 @@ public class CopyListRandomPointer {
         System.out.println(deepCopy);
     }
 
+    // Approach 2 - 2 Pass
     public Node copyRandomListSol2(Node head) {
         if (head == null) {
             return head;
@@ -80,7 +81,7 @@ public class CopyListRandomPointer {
         // add oldNode and cloneNode in visitedMap
         visitedMap.put(oldNode, cloneNode);
 
-        while (oldNode != null) { //A
+        while (oldNode != null) {
 
             cloneNode.setNext(getClonedNode(oldNode.next, visitedMap)); //B ->B'
             cloneNode.setRandom(getClonedNode(oldNode.random, visitedMap));//C -> C'
@@ -105,6 +106,27 @@ public class CopyListRandomPointer {
         }
         return null;
     }
+
+    // Approach 3 - Using Recursion
+    Map<Node, Node> map = new HashMap<Node, Node>();
+
+    public Node copyRandomListRecursion(Node head) {
+        return deepcopy(null, head);
+    }
+
+    Node deepcopy(Node n, Node head) {
+        if (head == null) {
+            return null;
+        }
+        n = new Node(head.data);
+        map.put(head, n);
+        n.next = deepcopy(n, head.next);
+        if (head.random != null) {
+            n.random = map.get(head.random);
+        }
+        return n;
+    }
+
 }
 
 class Node {

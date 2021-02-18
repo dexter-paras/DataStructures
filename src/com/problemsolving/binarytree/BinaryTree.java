@@ -129,23 +129,23 @@ public class BinaryTree<T> {
         Map<Integer, List<Integer>> map = new HashMap<>();
         traversal(root, 0, map);
 
-        for (int i = map.size()-1; i >= 0; i--) {
+        for (int i = map.size() - 1; i >= 0; i--) {
             result.add(map.get(i));
         }
         return result;
     }
 
-    void traversal(TreeNode root, int level, Map<Integer,List<Integer>> map){
-        if(root ==null){
+    void traversal(TreeNode root, int level, Map<Integer, List<Integer>> map) {
+        if (root == null) {
             return;
         }
-        insertIntoMap(map,level,root);
-        traversal(root.left,level+1,map);
-        traversal(root.right,level+1,map);
+        insertIntoMap(map, level, root);
+        traversal(root.left, level + 1, map);
+        traversal(root.right, level + 1, map);
     }
 
-    void insertIntoMap(Map<Integer,List<Integer>> map, int level,TreeNode root){
-        if(!map.containsKey(level)){
+    void insertIntoMap(Map<Integer, List<Integer>> map, int level, TreeNode root) {
+        if (!map.containsKey(level)) {
             map.put(level, new ArrayList<>());
         }
         map.get(level).add(root.val);
@@ -305,7 +305,6 @@ target = 22
         tree.root.left.left.left = new TreeNode(-1);
     }
 
-
     // Path Sum
     /*
 target = 22
@@ -359,13 +358,13 @@ target = 22
     }
 
     /*
-    *     4
-    *   /  \
-    *  2    7
-    * / \  / \
-    *1  3 6  9
-    *
-    */
+     *     4
+     *   /  \
+     *  2    7
+     * / \  / \
+     *1  3 6  9
+     *
+     */
 
     public static void createBinarySearchTree(BinaryTree tree) {
         tree.root = new TreeNode(4);
@@ -375,6 +374,48 @@ target = 22
         tree.root.left.right = new TreeNode(3);
         tree.root.right.left = new TreeNode(6);
         tree.root.right.right = new TreeNode(9);
+    }
+
+    /*
+     *     4
+     *   /  \
+     *  1    6
+     * / \  / \
+     *0  2 5  7
+     *   \     \
+     *   3     8
+     *
+     */
+
+    public static void createBinarySearchTree3(BinaryTree tree) {
+        tree.root = new TreeNode(4);
+        tree.root.left = new TreeNode(1);
+        tree.root.right = new TreeNode(6);
+        tree.root.left.left = new TreeNode(0);
+        tree.root.left.right = new TreeNode(2);
+        tree.root.left.right.right = new TreeNode(3);
+        tree.root.right.left = new TreeNode(5);
+        tree.root.right.right = new TreeNode(7);
+        tree.root.right.right.right = new TreeNode(8);
+    }
+
+
+    /*
+     *     3 <- root
+     *   /  \
+     *  0    4
+     *   \
+     *    2
+     *   /
+     *  1
+     */
+
+    public static void createBinarySearchTree2(BinaryTree tree) {
+        tree.root = new TreeNode(3);
+        tree.root.left = new TreeNode(0);
+        tree.root.right = new TreeNode(4);
+        tree.root.left.right = new TreeNode(2);
+        tree.root.left.right.left = new TreeNode(1);
     }
 
     /*
@@ -392,21 +433,21 @@ target = 22
         tree.root.right.right = new TreeNode(5);
     }
 
-/*
-        1
-      /    \
-     2      3
-   /  \    / \
-   4   5  6  7
-       /\  / \
-      8 9 13 14
-      /
-     10
-     / \
-    11 12
+    /*
+            1
+          /    \
+         2      3
+       /  \    / \
+       4   5  6  7
+           /\  / \
+          8 9 13 14
+          /
+         10
+         / \
+        11 12
 
 
-*/
+    */
     public static void createBinaryTreePrintNodes(BinaryTree tree) {
         tree.root = new TreeNode(1);
         tree.root.left = new TreeNode(2);
@@ -423,6 +464,5 @@ target = 22
         tree.root.right.right.left = new TreeNode(13);
         tree.root.right.right.right = new TreeNode(14);
     }
-
 
 }

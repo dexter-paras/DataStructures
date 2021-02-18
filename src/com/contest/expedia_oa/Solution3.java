@@ -1,7 +1,7 @@
 /**
  * Alipay.com Inc. Copyright (c) 2004-2020 All Rights Reserved.
  */
-package com.contest.expedia;
+package com.contest.expedia_oa;
 
 /**
  * @author paras.chawla

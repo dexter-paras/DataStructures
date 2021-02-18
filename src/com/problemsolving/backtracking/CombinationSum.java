@@ -58,17 +58,18 @@ public class CombinationSum {
             return;
         }
 
-        //2. candidates[] [2,3,5] target=9
+        //2. candidates[] [2,3,6,7] target=7
         for (int i = idx; i < candidates.length; i++) {
 
             //if you dont do this , your target will get into negatives, and will also go over the entire array list
             if (candidates[i] > target) {
                 break;
             }
+            // choose
             curRes.add(candidates[i]);
+            // recurse
             findCombinationSumToTarget(candidates, target - candidates[i], curRes, finalResult, i);
-
-            // 3. To go back to previous level , need to remove last element added in currList
+            // unchoose
             curRes.remove(curRes.size() - 1);
         }
     }
@@ -154,9 +155,135 @@ public class CombinationSum {
 
     }
 
+    // k - size of list, n - target sum
+    public List<List<Integer>> combinationSum3(int k, int n) {
+
+        // storing actual result
+        List<List<Integer>> result = new ArrayList<>();
+
+        List<Integer> choosenList = new ArrayList<>();
+        List<Integer> unChoosenList = new ArrayList<>();
+
+        for (int i = 1; i <= 9; i++) {
+            unChoosenList.add(i);
+        }
+
+        helper(k, n, choosenList, unChoosenList, result);
+
+        Set<List<Integer>> set = new HashSet<>();
+
+        for (List<Integer> list : result) {
+            list.sort(null);
+            set.add(list);
+        }
+
+        // storing actual result
+        List<List<Integer>> finalResult = new ArrayList<>();
+        finalResult.addAll(set);
+
+        return finalResult;
+    }
+
+    private void helper(int k, int target, List<Integer> choosenList, List<Integer> unChoosenList, List<List<Integer>> result) {
+
+        // base condition
+        if (choosenList.size() == k) {
+            if (target == 0) {
+                result.add(new ArrayList<>(choosenList));
+            }
+            return;
+        }
+
+        for (int i = 0; i < unChoosenList.size(); i++) {
+
+            int candidate = unChoosenList.get(i);
+
+            // there is no point of proceeding further if current candidate is greater than target
+            if (candidate > target) {
+                break;
+            }
+
+            // choose , remove from uL & add to cL
+            choosenList.add(unChoosenList.remove(i));
+            // recurse
+            helper(k, target - candidate, choosenList, unChoosenList, result);
+            // unchoose , add back to uL and remove from cL
+            unChoosenList.add(i, choosenList.get(choosenList.size() - 1));
+            choosenList.remove(choosenList.size() - 1);
+        }
+    }
+
+    //  Approach 2- Better Time Complexity
+    public List<List<Integer>> combinationSum3Approach2(int k, int n) {
+        List<List<Integer>> ans = new ArrayList<>();
+        combinationSol3(ans, new ArrayList<Integer>(), k, 1, n);
+        return ans;
+    }
+
+    //  Approach 2- Better Time Complexity
+    private void combinationSol3(List<List<Integer>> result, List<Integer> comb, int k, int start, int target) {
+
+        // 1. Base condition
+        if (comb.size() == k && target == 0) {
+            List<Integer> li = new ArrayList<Integer>(comb);
+            result.add(li);
+            return;
+        }
+
+        // Break early , if target not 0 but comb size is full, need to remove last element from comb
+        if (comb.size() == k) {
+            return;
+        }
+
+        for (int i = start; i <= 9; i++) {
+            if (i > target) {
+                break;
+            }
+            comb.add(i);
+            combinationSol3(result, comb, k, i + 1, target - i);
+            comb.remove(comb.size() - 1);
+        }
+    }
+
+    // Approach 3 - Easy to understand
+    public List<List<Integer>> combinationSum3Approach3(int k, int n) {
+        int[] num = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        backTrack(result, new ArrayList<Integer>(), num, k, n, 0);
+        return result;
+    }
+
+    private void backTrack(List<List<Integer>> result, List<Integer> list, int[] num, int k, int target, int idx) {
+
+        // base condition
+        if (k == 0 && target == 0) {
+            result.add(new ArrayList<Integer>(list));
+            return;
+        }
+
+        for (int i = idx; i < num.length && target > 0 && k > 0; i++) {
+
+            if (num[i] > target) {
+                break;
+            }
+
+            // choose
+            list.add(num[i]);
+            // recurse
+            backTrack(result, list, num, k - 1, target - num[i], i + 1);
+            // unchoose
+            list.remove(list.size() - 1);
+        }
+    }
+
     public static void main(String[] args) {
-        //System.out.println(new CombinationSum().combinationSum2(new int[] {2, 3, 5}, 9));
+        CombinationSum obj = new CombinationSum();
+        //System.out.println(obj.combinationSum(new int[] {2, 3, 6, 7}, 7));
+        //System.out.println(obj.combinationSum(new int[] {2, 3, 6, 7}, 7));
         // System.out.println(new CombinationSum().combinationSum2(new int[] {2, 5, 2,1,2}, 5));
-        System.out.println(new CombinationSum().combinationSum2(new int[] {10,1,2,7,6,1,5}, 8));
+        //System.out.println(obj.combinationSum2(new int[] {10, 1, 2, 7, 6, 1, 5}, 8));
+        //System.out.println(obj.combinationSum3(3, 9));
+        //System.out.println(obj.combinationSum3Approach2(3, 9));
+        System.out.println(obj.combinationSum3Approach3(3, 9));
     }
 }

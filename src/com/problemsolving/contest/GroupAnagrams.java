@@ -84,7 +84,41 @@ public class GroupAnagrams {
         return res;
     }
 
+    public boolean isAnagram(String s, String t) {
+
+        if(s.length()!=t.length())
+            return false;
+
+        Map<Character, Integer> charMap = new HashMap<>();
+
+        for (char c : s.toCharArray()) {
+            charMap.put(c, charMap.getOrDefault(c, 0) + 1);
+        }
+
+        // a-3,n-1,g-1,r-1,m-1
+        // traverse t and charMap should be empty if all characters matched
+        for (char c : t.toCharArray()) {
+            if (!charMap.containsKey(c)) {
+                return false;
+            }
+            // reduce count and remove from map if count=0
+            else {
+                int count = charMap.get(c);
+                int newCount = count - 1;
+                if (newCount > 0) {
+                    charMap.put(c, newCount);
+                } else {
+                    charMap.remove(c);
+                }
+            }
+        }
+
+        return charMap.size() == 0 ? true : false;
+    }
+
     public static void main(String[] args) {
+        GroupAnagrams obj = new GroupAnagrams();
+        obj.isAnagram("anagram", "nagaram");
         //System.out.println(new GroupAnagrams().groupAnagrams(new String[] {"ate", "tae", "bat", "cat", "tab"}));
         System.out.println(new GroupAnagrams().groupAnagrams2(new String[] {"ate", "tae", "bat", "cat", "tab"}));
     }

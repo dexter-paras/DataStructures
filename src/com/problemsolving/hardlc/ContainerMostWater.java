@@ -45,6 +45,10 @@ public class ContainerMostWater {
     smaller one of first and last line.
     All other containers are less wide and thus would need a higher water level in order to hold more water.
     The smaller one of first and last line doesn't support a higher water level and can thus be safely removed from further consideration.
+
+    Video solution - proof by contradiction - Amazingly explained
+    https://leetcode.com/problems/container-with-most-water/solution/
+
 */
     public int maxAreaSol2(int[] heights) {
         int maxArea = 0;

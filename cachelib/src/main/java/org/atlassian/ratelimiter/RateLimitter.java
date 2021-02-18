@@ -69,7 +69,7 @@ public class RateLimitter {
         if(existingRateLimitingData.containsKey(now)){
             int count= existingRateLimitingData.get(now);
             existingRateLimitingData.put(now,++count);
-            rateLimitingMap.put(customerId,existingRateLimitingData);
+         //   rateLimitingMap.put(customerId,existingRateLimitingData);
         }
         return false;
     }

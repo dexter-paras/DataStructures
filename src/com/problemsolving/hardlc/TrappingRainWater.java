@@ -26,12 +26,14 @@ public class TrappingRainWater {
         int rmax[] = new int[size];
 
         // construct left max out of elevation map
+        // non-decreasing or increasing array
         lmax[0] = height[0];
         for (int i = 1; i < size; i++) {
             lmax[i] = Math.max(height[i], lmax[i - 1]);
         }
 
         // construct right max out of elevation map
+        // non-increasing or decreasing array
         rmax[size - 1] = height[size - 1];
         for (int j = size - 2; j >= 0; j--) {
             rmax[j] = Math.max(height[j], rmax[j + 1]);

@@ -1,7 +1,9 @@
 /**
  * Alipay.com Inc. Copyright (c) 2004-2020 All Rights Reserved.
  */
-package com.problemsolving.binarytree;
+package com.problemsolving.binarytree.bst;
+
+import com.problemsolving.binarytree.TreeNode;
 
 /**
  * @author paras.chawla

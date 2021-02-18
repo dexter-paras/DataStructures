@@ -11,6 +11,10 @@ import java.util.Map;
 /**
  * @author paras.chawla
  * @version $Id: AddAndSearchWord.java, v 0.1 2020-08-08 11:40 paras.chawla Exp $$
+ * Paras
+ * Par
+ * Sonal
+ * 5-> <Paras,Sonal>
  */
 public class AddAndSearchWord {
 

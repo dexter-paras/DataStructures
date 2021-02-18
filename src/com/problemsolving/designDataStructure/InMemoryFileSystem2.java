@@ -13,7 +13,18 @@ import java.util.Map;
  * @author paras.chawla
  * @version $Id: InMemoryFileSystem2.java, v 0.1 2020-12-07 11:04 paras.chawla Exp $$
  * <p>
- * / -e -f -g /dir1 -h -i /dir2 -p /dir4 -x -y
+ * /        Map<String, Directory> directoryMap && Map<String, String> filesMap
+ *  /dir1
+ *    /dir2
+ *    h.txt
+ *    i.txt
+ *      /dir3 <- mkdir("/a/c/p")
+ *  /dir4
+ *    /dir5
+ *    j.txt
+ *  e.txt
+ *  f.txt
+ *  g.txt
  */
 public class InMemoryFileSystem2 {
 
@@ -24,19 +35,19 @@ public class InMemoryFileSystem2 {
     }
 
 
-    // Create directory on the path given "/dir1/dir2/dir3
+    // Create directory on the path given "/dir1/dir2/dir3"
     public void mkdir(String path) {
 
         Directory temp = root;
-        String[] tokens = path.split("/");
+        String[] tokens = path.split("/"); // "dir1","dir2","dir3"
 
         // traverse till second last directory and create dir3
         for (int i = 1; i < tokens.length; i++) {
-            String directoryName = tokens[i];
+            String directoryName = tokens[i]; // dir1 then dir2
 
             // check if middle directories not exist, create those directories
             if (!temp.directoryMap.containsKey(directoryName)) {
-                temp.directoryMap.put(directoryName, new Directory());
+                temp.directoryMap.put(directoryName, new Directory()); // "/dir1" got created then "/dir2" got created
             }
             temp = temp.directoryMap.get(directoryName);
         }
@@ -44,7 +55,7 @@ public class InMemoryFileSystem2 {
 
     // Create files if not exist and put content
     // Append content to existing files
-    // "/dir1/dir2/p" , "Hello , adding some content in p file"
+    // "/dir1/dir2/h" , "Hello , adding some content in h.txt file"
     public void addContentToFile(String filePath, String content) {
 
         Directory temp = root;
@@ -76,7 +87,7 @@ public class InMemoryFileSystem2 {
         return temp.filesMap.get(fileName);
     }
 
-    /* ls /dir1/dir2/p -> return just file Name
+    /* ls /dir1/dir2/h -> return just file Name
     * If the last level in the input happens to be a file name, we simply need to return the file name.
     * So, we directly return the last entry in the dd array. If the last level entry happens to be a directory,
     * we can obtain its subdirectory list from the list of keys in its dirsdirs hashmap. Similarly,
@@ -94,9 +105,9 @@ public class InMemoryFileSystem2 {
             temp = temp.directoryMap.get(directoryName);
         }
 
-        // check if tokens[tokens.length -1] is a directory or a file Name
+        // check if last token is a directory or a file Name
         if(temp.filesMap.containsKey(tokens[tokens.length-1])){
-            list.add(tokens[tokens.length-1]);
+            list.add(tokens[tokens.length-1]);// add file in list and return
             return list;
         }else {
             // if its directory
@@ -119,12 +130,12 @@ public class InMemoryFileSystem2 {
         fileSystem2.mkdir("/dir4");
 
         // adding Content to File
-        fileSystem2.addContentToFile("/dir1/dir2/p","Hello, Today is superb Monday");
-        fileSystem2.addContentToFile("/dir1/dir2/q","Hello paras, Today I'm happy");
-        fileSystem2.addContentToFile("/dir1/dir2/r","Hello paras, MONDAY IS EXECUTION DAY");
+        fileSystem2.addContentToFile("/dir1/dir2/h","Hello, Today is superb Monday");
+        fileSystem2.addContentToFile("/dir1/dir2/i","Hello paras, Today I'm happy");
+        fileSystem2.addContentToFile("/dir1/dir2/h","Hello paras, MONDAY IS EXECUTION DAY");
 
         // reading content from File
-        System.out.println(fileSystem2.readContentFromFile("/dir1/dir2/p"));
+        System.out.println(fileSystem2.readContentFromFile("/dir1/dir2/h"));
 
         // list of all files and diretories
         fileSystem2.ls("/dir1/dir2");

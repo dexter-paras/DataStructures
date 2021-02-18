@@ -1,6 +1,5 @@
 /**
- * Alipay.com Inc.
- * Copyright (c) 2004-2019 All Rights Reserved.
+ * Alipay.com Inc. Copyright (c) 2004-2019 All Rights Reserved.
  */
 package com.problemsolving.string;
 
@@ -11,22 +10,30 @@ package com.problemsolving.string;
 public class AddString {
 
     public static void main(String[] args) {
-        String s1 = "99975297";
-        String s2 = "00923679";
-        addStrings(s1, s2);
+        String s1 = "12341";
+        String s2 = "949";
+        System.out.println(addStrings(s1, s2));
     }
 
+    // "1" num1
+    // "9" num2
+    //"10" result
     public static String addStrings(String num1, String num2) {
-        int extra = 0;
         int l1 = num1.length() - 1;
         int l2 = num2.length() - 1;
-        StringBuilder sb = new StringBuilder();
-        for (; l1 >= 0 || l2 >= 0 || extra == 1; l1--, l2--) {
-            int x = l1 < 0 ? 0 : num1.charAt(l1) - '0';
-            int y = l2 < 0 ? 0 : num2.charAt(l2) - '0';
-            sb.append((x + y + extra) % 10);
-            extra = (x + y + extra) / 10;
+
+        StringBuilder builder = new StringBuilder();
+        int extra = 0;
+        for (; l1 >= 0 || l2 >= 0; l1--, l2--) {
+            int sum = (l1 >= 0 ? num1.charAt(l1) - '0' : 0) + (l2 >= 0 ? num2.charAt(l2) - '0' : 0) + extra;//10
+            extra = sum > 9 ? sum / 10 : 0;//1
+            sum = sum > 9 ? sum % 10 : sum;//0
+            builder.append(sum);//0
         }
-        return sb.reverse().toString();
+        if (extra > 0) {
+            builder.append(extra);
+        }
+        return builder.reverse().toString();
+
     }
 }
