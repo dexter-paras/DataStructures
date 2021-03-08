@@ -13,7 +13,8 @@ import java.util.Queue;
 public class ShortestPathBinaryMatrix {
 
     /**
-     * grid[][] 0 0 0 1 1 0 1 1 0
+     * grid[][]
+     * 0 0 0 1 1 0 1 1 0
      */
 
     // Shortest path from top-left to bottom-right

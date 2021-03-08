@@ -281,7 +281,7 @@ public class CombinationSum {
         //System.out.println(obj.combinationSum(new int[] {2, 3, 6, 7}, 7));
         //System.out.println(obj.combinationSum(new int[] {2, 3, 6, 7}, 7));
         // System.out.println(new CombinationSum().combinationSum2(new int[] {2, 5, 2,1,2}, 5));
-        //System.out.println(obj.combinationSum2(new int[] {10, 1, 2, 7, 6, 1, 5}, 8));
+        System.out.println(obj.combinationSum2(new int[] {3, 2, 6, 4, 7}, 9));
         //System.out.println(obj.combinationSum3(3, 9));
         //System.out.println(obj.combinationSum3Approach2(3, 9));
         System.out.println(obj.combinationSum3Approach3(3, 9));

@@ -72,7 +72,7 @@ public class InsertIntoBST {
                 currNode = currNode.left;
             }
 
-            // 3.2 paste left subtree of (to be deleted node) to current Node(Successor node)
+            // 3.2 paste left subtree of (to be deleted node) to current TreeNode(Successor node)
             currNode.left = root.left;
 
             return root.right;

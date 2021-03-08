@@ -8,8 +8,8 @@ import java.util.Queue;
 
 /**
  * @author paras.chawla
- * @version $Id: ShortestBridge.java, v 0.1 2020-12-21 11:19 paras.chawla Exp $$ https://leetcode
- * .com/problems/shortest-bridge/discuss/190421/Java-extremely-easy-to-understand-with-comment-
+ * @version $Id: ShortestBridge.java, v 0.1 2020-12-21 11:19 paras.chawla Exp $$
+ * https://leetcode.com/problems/shortest-bridge/discuss/190421/Java-extremely-easy-to-understand-with-comment-
  * (bfs-to-find-answer-and-dfs-to-paint-the-matrix)
  */
 

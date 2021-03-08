@@ -14,8 +14,8 @@ import java.util.Random;
  Thread1 taking lock on Resource1 and Thread2 taking lock on Resource2
  Thread1 trying to take lock on Resource2 and Thread1 trying to take lock on Resource1
 
- Train1 locking RoadA and hence passing through Road1 and
- Train2 locking RoadB and hence passing through Road2
+ Train1 locking RoadA and hence passing through RoadA and
+ Train2 locking RoadB and hence passing through RoadB
 
  Train1 trying to lock on RoadB as well so as to avoid collison,
  similarly Train2 trying to lock on RoadA so as to avoid collison.

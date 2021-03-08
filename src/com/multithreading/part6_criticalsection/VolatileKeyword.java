@@ -50,7 +50,7 @@ public class VolatileKeyword {
 class VolatileThread extends Thread {
 
     // keepRunningFlag as true in main Memory and all threads are reading from main memory
-    volatile boolean keepRunningFlag = true;
+     volatile boolean keepRunningFlag = true;
 
     @Override
     public void run() {

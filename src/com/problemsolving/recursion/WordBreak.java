@@ -50,6 +50,8 @@ public class WordBreak {
         return false;
     }
 
+    // Approach 2 - Bottom Up Approach
+    // Intuition - Solving puzzle putting small pieces together
     private boolean wordBreakDp(String s, List<String> wordDict) {
 
         if (s.isEmpty()) {
@@ -70,6 +72,7 @@ public class WordBreak {
         // We can make empty string from wordDict everyTime
         dp[0] = true;
 
+        //TC - O(n^3)
         for (int i = 1; i <= s.length(); i++) {
             for (int j = i - 1; j >= 0; j--) {
                 if (dp[j] && set.contains(s.substring(j, i))) {

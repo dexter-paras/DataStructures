@@ -53,7 +53,7 @@ public class LowestCommonAncestor {
         return root.val;
     }
 
-    // Approach 2 - Using Recursion to find LCA of a BT
+    // Approach 2.1 - Using Recursion to find LCA of a BT
     public static TreeNode lowestCommonAncestorOfBT(TreeNode root, TreeNode p, TreeNode q) {
         List<TreeNode> path1 = new ArrayList<>();
         List<TreeNode> path2 = new ArrayList<>();
@@ -74,7 +74,7 @@ public class LowestCommonAncestor {
         return path1.get(i - 1);
     }
 
-    // To Find path of a node n from root node and find if path exist or not
+    // To Find path of a node x from root node and find if path exist or not
     private static boolean findPath(TreeNode root, TreeNode x, List<TreeNode> path) {
 
         // base condition
@@ -103,6 +103,34 @@ public class LowestCommonAncestor {
         return false;
     }
 
+    /* Approach 2.2
+        Using Recursion , only single traversal
+        O(n) TC and O(1) SC
+     */
+
+    public static TreeNode findLCA(TreeNode node, int p, int q) {
+
+        // base case
+        if (node == null) { return null; }
+
+        if (node.val ==p || node.val ==q)
+            return node;
+
+        // Look for keys in left and right subtree
+        TreeNode left_lca = findLCA(node.left, p, q);
+        TreeNode right_lca = findLCA(node.right, p, q);
+
+        // If both of the above calls return Non-NULL, then one key
+        // is present in one subtree and other is present in other,
+        // So this node is the LCA
+
+        if(left_lca!=null && right_lca!=null)
+            return node;
+
+        // Otherwise check if left subtree or right subtree is LCA
+        return (left_lca != null) ? left_lca : right_lca;
+    }
+
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
         /*
@@ -116,8 +144,10 @@ public class LowestCommonAncestor {
         */
 
         System.out.println("USING Recursion and finding path");
-        BinaryTree.createBinaryTree3(tree);
-        lowestCommonAncestorOfBT(tree.root, new TreeNode(4), new TreeNode(7));
+        BinaryTree.createBinaryTreePrintNodes(tree);
+        //lowestCommonAncestorOfBT(tree.root, new TreeNode(4), new TreeNode(7));
+        System.out.println(findLCA(tree.root,4,5));
+        System.out.println(findLCA(tree.root,11,7));
     }
 
 }

@@ -99,7 +99,7 @@ public class NumberOfConnectedComponents {
         // create an array which contains parent of every index
         int[] parent = new int[n];
 
-        // initially parent of all index is itself , -1 represent parent of itself
+        // initially parent of all index is itself
         // Initially add edges are independent subset and while traversing edges, we'll keep union them
         for (int i = 0; i < n; i++) {
             parent[i] = i;
@@ -108,18 +108,20 @@ public class NumberOfConnectedComponents {
         // traverse edges
         for (int[] edge : edges) {
 
-            int fromEdge = edge[0];//0
-            int toEdge = edge[1];//1
+            int fromVertex = edge[0];//0
+            int toVertex = edge[1];//1
 
-            union(fromEdge, toEdge, parent);
+            union(fromVertex, toVertex, parent);
         }
 
         // find total connected Components
         Set<Integer> set = new HashSet<>();
-        //parent[] = [1,2,2,4,4]
-        //           [0,1,2,3,4]
+        // parent[] = [1,2,2,4,4]
+        // index  =   [0,1,2,3,4]
 
-        // Doing path compression
+        // After path compression
+        // parent[] = [2,2,2,4,4]
+        //    index = [0,1,2,3,4]
         for (int i = 0; i < parent.length; i++) {
             set.add(find(i, parent));
         }
@@ -127,19 +129,20 @@ public class NumberOfConnectedComponents {
         return set.size();
     }
 
-    private void union(int fromEdge, int toEdge, int[] parent) {
-        int parentFromEdge = find(fromEdge, parent); //0
-        int parentToEdge = find(toEdge, parent); // 1
+    private void union(int fromVertex, int toVertex, int[] parent) {// 0,1,parent[]
+        int parentFromVertex = find(fromVertex, parent); //0
+        int parentToVertex = find(toVertex, parent); // 1
 
-        parent[parentFromEdge] = parentToEdge;
+        // if absolute parent of both vertexes are different, merge them or connect them so that they act as single component
+        parent[parentFromVertex] = parentToVertex;
     }
 
-    private int find(int edge, int[] parent) {
-        // if Absolute parent of edge is not equal to current edge
-        if (parent[edge] != edge) {
-            parent[edge] = find(parent[edge], parent);
+    private int find(int vertex, int[] parent) {
+        // if Absolute parent of vertex is not equal to current vertex
+        if (parent[vertex] != vertex) {
+            parent[vertex] = find(parent[vertex], parent);
         }
-        return parent[edge];
+        return parent[vertex];
     }
 
     public static void main(String[] args) {

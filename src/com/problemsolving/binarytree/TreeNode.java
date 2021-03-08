@@ -23,6 +23,13 @@ public class TreeNode {
         this.right = null;
     }
 
+    public TreeNode(int val,TreeNode left, TreeNode right) {
+        this.val = val;
+        this.left = null;
+        this.right = null;
+    }
+
+
     @Override
     public String toString() {
         return "TreeNode{" +

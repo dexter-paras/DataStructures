@@ -18,7 +18,7 @@ public class LazyRegisryWithDCL {
 
     // making constructor private makes it unavailable to create instance of class outside and inheritance as well
     private LazyRegisryWithDCL() {
-
+        
     }
 
     // static method called by client to get singleton instance as per requirement

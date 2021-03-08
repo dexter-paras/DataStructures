@@ -128,8 +128,8 @@ public class PoliceHackerVaultCase {
         Vault vault = new Vault(randomPassword);
 
         List<Thread> list = new ArrayList<>();
-        list.add(new AscendingHackerThread(vault));
-        list.add(new DescendingHackerThread(vault));
+        list.add(new AscendingHackerThread(vault));// Hackers trying to brute-force by trying password in asc order
+        list.add(new DescendingHackerThread(vault));// Hackers trying to brute-force by trying password in desc order
         list.add(new PoliceThread());
 
         for (Thread thread : list) {

@@ -14,12 +14,13 @@ import java.util.HashMap;
  */
 public class BSTToSortedDoubleLinkedList {
 
-    public TreeNode treeToDoublyList(TreeNode root) {
+    // Approach 1 - Not Working
+    public com.problemsolving.binarytree.TreeNode treeToDoublyList(com.problemsolving.binarytree.TreeNode root) {
 
         if (root == null) { return root; }
 
         // K- Child & V- Parent
-        HashMap<TreeNode, TreeNode> parentMap = new HashMap<>();
+        HashMap<com.problemsolving.binarytree.TreeNode, com.problemsolving.binarytree.TreeNode> parentMap = new HashMap<>();
         parentMap.put(root, null);
 
         inorder(root, parentMap);
@@ -28,7 +29,8 @@ public class BSTToSortedDoubleLinkedList {
 
     }
 
-    private void inorder(TreeNode root, HashMap<TreeNode, TreeNode> map) {
+    private void inorder(com.problemsolving.binarytree.TreeNode root,
+                         HashMap<com.problemsolving.binarytree.TreeNode, com.problemsolving.binarytree.TreeNode> map) {
 
         if (root == null) { return; }
 
@@ -40,6 +42,32 @@ public class BSTToSortedDoubleLinkedList {
             map.put(root.right, root);
             inorder(root.right, map);
         }
+    }
+
+    // Use Inorder and cleverly use dummy node
+    // Intuition is to do InOrder traversal and connect currNode and prev node accordingly
+    // https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/discuss/149151/Concise-Java-solution-Beats-100
+    // TODO - Read https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/discuss/273834/Morris-traversal-idea-to-beat-100-time-and-space
+    TreeNode prev = null;
+
+    public TreeNode treeToDoublyList2(TreeNode root) {
+        if (root == null) { return null; }
+        TreeNode dummy = new TreeNode(0, null, null);
+        prev = dummy;
+        helper(root);
+        //connect head and tail
+        prev.right = dummy.right;
+        dummy.right.left = prev;
+        return dummy.right;
+    }
+
+    private void helper(TreeNode cur) {
+        if (cur == null) { return; }
+        helper(cur.left);
+        prev.right = cur;
+        cur.left = prev;
+        prev = cur;
+        helper(cur.right);
     }
 
     /*
@@ -56,6 +84,6 @@ public class BSTToSortedDoubleLinkedList {
         BinaryTree tree = new BinaryTree();
         BinaryTree.createBinarySearchTree(tree);
 
-        obj.treeToDoublyList(tree.root);
+        obj.treeToDoublyList2(tree.root);
     }
 }

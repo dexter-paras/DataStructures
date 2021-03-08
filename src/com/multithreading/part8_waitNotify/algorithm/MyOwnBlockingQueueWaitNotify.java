@@ -5,7 +5,6 @@ package com.multithreading.part8_waitNotify.algorithm;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.concurrent.ArrayBlockingQueue;
 
 /**
  * @author paras.chawla

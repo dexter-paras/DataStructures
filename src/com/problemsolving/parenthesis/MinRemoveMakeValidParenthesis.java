@@ -13,6 +13,7 @@ import java.util.Stack;
  */
 public class MinRemoveMakeValidParenthesis {
 
+    // Not working
     public String minRemoveToMakeValid(String s) {
 
         if(s==null || s.length()==0){
@@ -70,10 +71,14 @@ public class MinRemoveMakeValidParenthesis {
         return builder.toString();
     }
 
+
+    // Approach 1
     public String minRemoveToMakeValid2(String s) {
 
         // s= "lee(t(c)o)de)"
-
+        //     0123456789111
+        //               012
+        // stack = 12
         // 1. if encounter any ')' when stack is empty, put it in removal list
         Set<Integer> indexToRemove = new HashSet<>();
 
@@ -97,9 +102,13 @@ public class MinRemoveMakeValidParenthesis {
         }
 
         // 3. if stack has unleft '(', need to add these in removal list as well
+        // ))((
+        // 0123
+        // indexToRemove => 0,1 ; Stack =>2,3
         while(!stack.isEmpty()){
             indexToRemove.add(stack.pop());
         }
+        // indexToRemove => 0,1,2,3
 
         // 4. We've list of all indexes which needs to be removed
         StringBuilder builder = new StringBuilder();

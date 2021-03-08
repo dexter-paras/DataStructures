@@ -1,21 +1,28 @@
-Expedia
----------------------------------
-1) Unique Path problem
+Disjoint Set Pb to solve
+========================
+https://leetcode.com/problems/redundant-connection/
+https://leetcode.com/problems/sentence-similarity-ii/
+
+
+Super Sonic Friday 19th Feb
+---------------------------
+1) Splitwise split algo         <- DONE
+2) Subset Sum problem - find subset which sum to target <- DONE
+3) Find all subsets which sum to target <- DONE
+4) LCA without finding path i.e. in O(1)    <-DONE
+5) Disjoint Set
 
 Hard LeetCode + Need to Code myself
 ---------------------------------
 1) Integer To English       https://leetcode.com/problems/integer-to-english-words/
 2) Median Sliding Window
 
-
 Medium LeetCode + Need to Code myself
 -------------------------------------
-1) Clone Graph
 2) minRemoveToMakeValid         https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/
 3) Spiral Matrix                https://leetcode.com/problems/spiral-matrix/
 4) Alien Dictionary             https://leetcode.com/problems/verifying-an-alien-dictionary/
 5) Min element in stack in O(1) https://www.youtube.com/watch?v=ZvaRHYYI0-4
-
 
 Revise Problems
 ---------------

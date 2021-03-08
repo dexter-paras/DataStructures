@@ -19,6 +19,7 @@ public class AtomicIncrementResourceSharing {
 
     public static void main(String[] args) throws InterruptedException {
 
+        // Shared object between two threads
         InventoryCounter inventoryCounter = new InventoryCounter();
 
         long startTime = System.currentTimeMillis();

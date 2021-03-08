@@ -86,7 +86,45 @@ public class ValidPalindrome {
         return true;
     }
 
+    public boolean validPalindrome3(String s) {
+
+        int p1 = 0;
+        int p2 = s.length()-1;
+
+        while(p1<=p2){
+
+            if(s.charAt(p1)== s.charAt(p2)){
+                p1++;
+                p2--;
+            }else{
+                return isPalindrome(s.substring(p1+1,p2+1)) || isPalindrome(s.substring(p1,p2));
+            }
+        }
+        return true;
+    }
+
+    private boolean isPalindrome(String str){
+
+        if(str.length()==1)
+            return true;
+
+        int p1=0;
+        int p2=str.length()-1;
+
+        while(p1<p2){
+            if(str.charAt(p1)!= str.charAt(p2))
+                return false;
+            else{
+                p1++;
+                p2--;
+            }
+        }
+        return true;
+    }
+
+
     public static void main(String[] args) {
+        new ValidPalindrome().validPalindrome3("deeee");
         new ValidPalindrome().validPalindrome(
                 "aguokepatgbnvfqmgmlcupuufxoohdfpgjdmysgvhmvffcnqxjjxqncffvmhvgsymdjgpfdhooxfuupuculmgmqfvnbgtapekouga");
         new ValidPalindrome().validPalindrome2(

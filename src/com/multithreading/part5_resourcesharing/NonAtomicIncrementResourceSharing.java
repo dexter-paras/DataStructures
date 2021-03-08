@@ -11,6 +11,7 @@ package com.multithreading.part5_resourcesharing;
 /* Here we're sharing an object btw 2 threads
    IncrementingCountingThread incrementing value of the object
    DecrementingCountingThread decrementing value of the object simultaneously
+   Unexpected count as both threads are working on non-atomic operation simultaneously
 */
 
 public class NonAtomicIncrementResourceSharing {
@@ -28,13 +29,7 @@ public class NonAtomicIncrementResourceSharing {
         incrementingThread.join();
         decrementingThread.join();
 
-        /* Unexpected count as both threads are working on non-atomic operation simultaneously
-        incrementingThread.start();
-        decrementingThread.start();
 
-        incrementingThread.join();
-        decrementingThread.join();
-        */
         System.out.println("Final value " + inventoryCounter.getItems());
 
     }
