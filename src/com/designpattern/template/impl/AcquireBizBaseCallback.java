@@ -20,16 +20,14 @@ public abstract class AcquireBizBaseCallback<Req extends AcquireBaseRequest, Res
         bizPreProcess(req, res);
     }
 
-    public void bizPreProcess(Req req, Res res) {
-
-    }
-
     public void process(Req request, Res result) {
         bizProcess(request, result);
     }
 
-    public abstract Res createDefaultResult();
+    public void bizPreProcess(Req req, Res res) {
 
+    }
     public abstract void bizProcess(Req request, Res result);
 
+    public abstract Res createDefaultResult();
 }

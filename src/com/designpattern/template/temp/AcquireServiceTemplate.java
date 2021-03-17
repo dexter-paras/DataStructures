@@ -13,14 +13,14 @@ import com.designpattern.template.models.AcquireBaseResult;
  */
 public class AcquireServiceTemplate {
 
-    public <T extends AcquireBaseRequest, R extends AcquireBaseResult> R
-    execute(T request, AcquireBizBaseCallback<T, R> action) {
+    public <T extends AcquireBaseRequest, R extends AcquireBaseResult> R execute(T request, AcquireBizBaseCallback<T, R> action) {
         return execute(request, action, true);
     }
 
     private <R extends AcquireBaseResult, T extends AcquireBaseRequest> R execute(T request, AcquireBizBaseCallback<T, R> action,
                                                                                   boolean onTxn) {
 
+        // Default result is different for all different classes, hence part of implementing class only
         R result = action.createDefaultResult();
 
         action.preProcess(request, result);

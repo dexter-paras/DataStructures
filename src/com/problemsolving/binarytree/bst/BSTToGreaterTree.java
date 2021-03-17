@@ -91,6 +91,36 @@ public class BSTToGreaterTree {
         BinaryTree tree = new BinaryTree();
         BinaryTree.createBinarySearchTree3(tree);
 
-        System.out.println(obj.convertBST(tree.root));
+        System.out.println(obj.convertBSTApproach3(tree.root));
+        System.out.println(tree.root);
     }
+
+    // Approach 3 - Using Recursion
+    /*
+     *     4
+     *   /  \
+     *  1    6
+     * / \  / \
+     *0  2 5  7
+     *   \     \
+     *   3     8
+     *
+     */
+    private int previousSum=0;
+    public TreeNode convertBSTApproach3(TreeNode root) {
+
+        reverseInorder2(root);
+        return root;
+    }
+
+    private void reverseInorder2(TreeNode root) {
+
+        if (root == null) { return; }
+        reverseInorder2(root.right);
+        int temp = root.val;//8
+        root.val = previousSum;//0
+        previousSum += temp;
+        reverseInorder2(root.left);
+    }
+
 }

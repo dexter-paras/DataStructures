@@ -45,4 +45,28 @@ public class TwoSum4 {
         map.put(root.val, map.getOrDefault(root.val, 0) + 1);
         inorder(root.right, map);
     }
+
+    public boolean findTarget2(TreeNode root, int k) {
+
+        Set<Integer> set = new HashSet<>();
+
+        // inorder traversal and checking
+        return inorder(root, k, set);
+    }
+
+    private boolean inorder(TreeNode root, int k, Set<Integer> set) {
+
+        if (root == null) {
+            return true;
+        }
+
+        inorder(root.left, k, set);
+        if (set.contains(k - root.val)) {
+            return true;
+        }
+        set.add(root.val);
+        inorder(root.right, k, set);
+        return false;
+    }
+
 }
