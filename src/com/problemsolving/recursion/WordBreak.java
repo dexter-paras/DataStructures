@@ -18,6 +18,32 @@ import java.util.Set;
  */
 public class WordBreak {
 
+    // TLS
+    public boolean wordBreakApproach0(String s, List<String> wordDict) {
+
+        // Adding words in a Set
+
+        Set<String> set = new HashSet<>(wordDict);
+
+        return wordBreak(s,set);
+    }
+
+
+    private boolean wordBreak(String s,Set<String> set){
+
+        // base condition
+        if(s.isEmpty()){
+            return true;
+        }
+
+        for(int i=0;i<s.length();i++){
+            if(set.contains(s.substring(0,i+1)) && wordBreak(s.substring(i+1), set)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     private boolean wordBreak(String s, List<String> wordDict) {
 
         Map<String, Boolean> map = new HashMap<>();

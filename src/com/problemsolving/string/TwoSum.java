@@ -13,12 +13,12 @@ import java.util.Map;
  */
 public class TwoSum {
 
-    // array =[10,15,3,7]
+    // array =[10,15,3,7] BETTER APPROACH
     public int[] twoSum(int[] nums, int target) {
 
         Hashtable<Integer, Integer> hashTable = new Hashtable<>();
         for (int i = 0; i < nums.length; i++) {
-            int num = nums[i];//2
+            int num = nums[i];
             if (hashTable.containsKey(target - num)) {
                 return new int[] {hashTable.get(target - num), i};
             }
@@ -27,6 +27,7 @@ public class TwoSum {
         throw new IllegalArgumentException("no two InMemoryDataStructure");
     }
 
+    // TRAVESSING TWICE
     public int[] twoSum2(int[] nums, int target) {
 
         int[] result = new int[2];

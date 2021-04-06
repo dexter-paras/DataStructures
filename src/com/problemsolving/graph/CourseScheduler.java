@@ -92,7 +92,9 @@ public class CourseScheduler {
         Queue<Integer> queue = new LinkedList();
         int count = 0;
 
-        for (int i = 0; i < numCourses; i++) { graph[i] = new ArrayList(); }
+        for (int i = 0; i < numCourses; i++) {
+            graph[i] = new ArrayList();
+        }
 
         for (int i = 0; i < prerequisites.length; i++) {
             degree[prerequisites[i][1]]++;
@@ -116,7 +118,11 @@ public class CourseScheduler {
                 }
             }
         }
-        if (count == numCourses) { return true; } else { return false; }
+        if (count == numCourses) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public static void main(String[] args) {

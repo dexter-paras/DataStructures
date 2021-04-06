@@ -35,9 +35,9 @@ Sort the input array nums.
 public class ThreeSum {
 
     // nums[] ={-1,0,1,2,-1,-4}
-    // sorted[]={-4,-1,-1,0,1,2}
-    //               ^  ^     ^
-    //              i  low    high
+    // sorted[]={-4,-3,-1,0,1,2}
+    //            ^  ^        ^
+    //            i low       high
     public List<List<Integer>> threeSum(int[] nums) {
 
         //1. Sort input array

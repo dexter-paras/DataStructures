@@ -54,10 +54,38 @@ public class UniquePath2 {
     /* TODO - Do it by 4th Feb
 
     grid[4][4]
-        0 0 1 0
+
+     WITH Obstacles
+     S->0 0 1 0
         0 0 0 0
         0 1 1 0
+        1 0 0 0 <- D
+
+     Make start as 1 since there exist a path from 0,0 to 0,0
+     WITH Obstacles
+     Step 1 :
+     S->1 1 0 0  if grid[0][i]==0, prev value else if grid[0][i]==1(obstacle), mark it 0 . No path
         1 0 0 0
+        1 1 1 0
+        0 0 0 0 <- D
+
+     Step 2:
+     S->1 1 0 0
+        1 2 2 2  if grid[i][j]==0, grid[i][j]= grid[i-1][j] + grid[i][j-1]; else if grid[i][j] ==1 , grid[i][j]= 0
+        1 0 0 2
+        0 0 0 2 <- D
+
+
+     WITHOUT Obstacles
+     S->0 0 0 0
+        0 0 0 0
+        0 0 0 0
+        0 0 0 0 <-D
+
+     S->0 1 1  1
+        1 2 3  4
+        1 3 6  10
+        1 4 10 20 <-D
 
     0 - empty space , can walk
     1 - Obstacle , can't walk
@@ -94,7 +122,7 @@ public class UniquePath2 {
             for (int j = 1; j < C; j++) {
                 // empty space
                 if (grid[i][j] == 0) {
-                    grid[i][j]= grid[i-1][j] + grid[i][j-1];
+                    grid[i][j] = grid[i - 1][j] + grid[i][j - 1];
                 }
                 // obstacle ,If any cell has an obstacle, we won't let that cell contribute to any path.
                 else {
@@ -103,12 +131,12 @@ public class UniquePath2 {
             }
         }
 
-        return grid[R-1][C-1];
+        return grid[R - 1][C - 1];
     }
 
     public static void main(String[] args) {
         UniquePath2 obj = new UniquePath2();
-        System.out.println(obj.uniquePathsWithObstaclesDp(new int[][] {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}}));
-        System.out.println(obj.uniquePathsWithObstacles(new int[][] {{0, 0}, {0, 1}}));
+        System.out.println(obj.uniquePathsWithObstacles(new int[][] {{0, 0, 1, 0}, {0, 0, 0, 0}, {0, 1, 1, 0}, {1, 0, 0, 0}}));
+        System.out.println(obj.uniquePathsWithObstaclesDp(new int[][] {{0, 0, 1, 0}, {0, 0, 0, 0}, {0, 1, 1, 0}, {1, 0, 0, 0}}));
     }
 }

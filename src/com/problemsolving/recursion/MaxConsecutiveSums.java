@@ -12,9 +12,8 @@ public class MaxConsecutiveSums {
     public static void main(String[] args) {
         MaxConsecutiveSums obj = new MaxConsecutiveSums();
         int[] A = new int[] {1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0};
-        int[] B = new int[] {0,0,1,1,0,0,1,1,1,0,1,1,0,0,0,1,1,1,1};
-        int K = 2;
-        System.out.println(obj.longestOnes2(A, K));
+        int[] B = new int[] {0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1};
+        System.out.println(obj.longestOnes2(A, 2));
         System.out.println(obj.longestOnes2(B, 3));
     }
 
@@ -70,17 +69,17 @@ public class MaxConsecutiveSums {
         for (int L = 0, R = 0; L < A.length && R < A.length; L++) {
 
             // Expanding R pointer
-            while (R< A.length && (A[R] == 1 || K > 0)) {
-                if(A[R]==0){
+            while (R < A.length && (A[R] == 1 || K > 0)) {
+                if (A[R] == 0) {
                     K--;
                 }
                 R++;
             }
 
             // window not following property
-            maxOnes = Math.max(maxOnes,R-L);
+            maxOnes = Math.max(maxOnes, R - L);
 
-            if(A[L] ==0){
+            if (A[L] == 0) {
                 K++;
             }
         }

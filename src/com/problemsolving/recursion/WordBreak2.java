@@ -65,7 +65,7 @@ public class WordBreak2 {
         dictionary.add("sand");
         dictionary.add("dog");
 
-        obj.wordBreak("catsanddog",dictionary);
+        System.out.println(obj.wordBreak("catsanddog",dictionary));
     }
 
 }

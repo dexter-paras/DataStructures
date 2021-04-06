@@ -10,10 +10,54 @@ import java.util.List;
 /**
  * @author paras.chawla
  * @version $Id: Triangle.java, v 0.1 2020-12-02 02:28 paras.chawla Exp $$
+ * WHY and HOw?
+ * Enjoy Problem and learn something
  */
 public class Triangle {
 
-    // Approach 1 - DP using Bottom Up
+    // Approach 1 - Recursion Top - Down
+    /*
+     Explanation: The triangle looks like:
+               2        i=0 j=0
+              3 4       i=1 j=0,1
+             6 5 7      i=2 j=0,1,2
+            4 1 8 3     i=3 j=0,1,2,3
+
+
+Lot of duplicate computation using recursion, hence use memoization
+
+              2
+           /     \
+          3       4
+        /  \    /  \
+       6   5   5   7
+      /\  /\  /\   \
+     4 1 1 8 1 8   3
+
+    */
+    public static int minimumPathSumTopToBottom(List<List<Integer>> triangle) {
+
+        if(triangle.isEmpty()){
+            return -1;
+        }
+
+        return minTotal(triangle, 0,0);
+    }
+
+    private static int minTotal(List<List<Integer>> triangle, int i, int j) {
+
+        if(i==triangle.size()){
+            return 0;
+        }
+
+        int val = triangle.get(i).get(j);
+        int left = minTotal(triangle,i+1,j); // Taking left element
+        int right = minTotal(triangle,i+1,j+1); // Taking right element
+
+        return val + Math.min(left,right);
+    }
+
+    // Approach 3 - DP using Bottom Up
     public static int minimumTotal(List<List<Integer>> triangle) {
 
         // base condtion
@@ -69,6 +113,7 @@ public class Triangle {
         triangle.add(c);
         triangle.add(d);
 
+        System.out.println(minimumPathSumTopToBottom(triangle));
         System.out.println(minimumTotal2(triangle));
     }
 }

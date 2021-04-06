@@ -14,6 +14,8 @@ public class PalindromePartition {
 
     List<List<String>> globalResult = new ArrayList<>();
 
+
+    // Intuition - Divide String into all possible substrings and continue dfs only if its a valid Palindrome
     public List<List<String>> partition(String str) {
 
         List<String> result = new ArrayList<>();
@@ -26,15 +28,25 @@ public class PalindromePartition {
         return globalResult;
     }
 
+    // str ="abba"
     private void partition(String str, List<String> result) {
-        if (str.length() == 0) {
+
+        // base condition
+        if (str.isEmpty()) {
             globalResult.add(new ArrayList<>(result));
         }
 
         for (int i = 0; i < str.length(); i++) {
+
             if (isPalindrome(str.substring(0, i + 1))) {
+
+                // Choose
                 result.add(str.substring(0, i + 1));
+
+                // recurse
                 partition(str.substring(i + 1), result);
+
+                // Unchoose
                 result.remove(result.size() - 1);
             }
         }
@@ -50,6 +62,7 @@ public class PalindromePartition {
     }
 
     // Approach 2- Using DP
+    // Removed isPalindrome method and replaced with already created dp array which tells if string is palindrome or not
     public List<List<String>> partitionDp(String s) {
         List<List<String>> res = new ArrayList<>();
         boolean[][] dp = new boolean[s.length()][s.length()];
@@ -81,7 +94,7 @@ public class PalindromePartition {
 
     public static void main(String[] args) {
         PalindromePartition obj = new PalindromePartition();
-        obj.partition("cbbbcc");
+        System.out.println(obj.partitionDp("abbcbba"));
     }
 
 }

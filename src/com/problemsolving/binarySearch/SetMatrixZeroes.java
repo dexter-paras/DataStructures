@@ -12,9 +12,18 @@ import java.util.Set;
  * @author paras.chawla
  * @version $Id: SetMatrixZeroes.java, v 0.1 2020-12-12 12:23 paras.chawla Exp $$
  * <p>
- * Input: matrix = [[0,1,2,0], [3,4,5,2], [1,3,1,5]]
+ * Input: matrix = [
+                     * [0,1,2,0],
+                     * [3,4,5,2],
+                     * [1,3,1,5]
+                     *
+                   ]
  * <p>
- * Output: [ [0,0,0,0], [0,4,5,0], [0,3,1,0]]
+ * Output: [
+                     * [0,0,0,0],
+                     * [0,4,5,0],
+                     * [0,3,1,0]
+ *         ]
  * https://www.youtube.com/watch?v=1KnLIAvTxjQ
  *
  * Intuition - Use first row and first col as dummy row and col to store values...No need to create 2 seperate dummy arrays
@@ -82,6 +91,8 @@ public class SetMatrixZeroes {
         }
     }
 
+    // BEST Solution - What is Expected
+    // O(1)
     // Space Complexity O(1) , without using any dummy row or dummy col
     public void setZeroesSol3(int[][] matrix) {
 

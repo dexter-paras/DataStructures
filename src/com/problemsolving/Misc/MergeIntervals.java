@@ -3,10 +3,13 @@
  */
 package com.problemsolving.Misc;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * @author paras.chawla
@@ -78,6 +81,34 @@ public class MergeIntervals {
 
         return result.toArray(new int[result.size()][]);
     }
+
+
+    // Best Approach
+    // TC O(nlogn)
+    // Intuition - Its not possible to use same intervals and keep updating.. For new merged answer, use new list
+    public int[][] mergeApproach3(int[][] intervals) {
+        if (intervals.length <= 1) { return intervals; }
+
+        // Sort by ascending starting point
+        Arrays.sort(intervals, (i1, i2) -> Integer.compare(i1[0], i2[0]));
+
+        LinkedList<int[]> merged = new LinkedList<>();
+
+        for (int[] currInterval : intervals) {
+
+            // non-overlapping, just add current Interval
+            if(merged.isEmpty() || merged.getLast()[1]< currInterval[1]){
+                merged.add(currInterval);
+            }
+            // currInterval is overlapping with last merged interval
+            else{
+                merged.getLast()[1]= Math.max(merged.getLast()[1],currInterval[1]);
+            }
+        }
+
+        return merged.toArray(new int[merged.size()][]);
+    }
+
 
     public static void main(String[] args) {
         new MergeIntervals().merge2(new int[][] {{1, 3}, {2, 6}, {8, 10}, {15, 18}});

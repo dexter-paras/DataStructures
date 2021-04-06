@@ -11,20 +11,19 @@ import java.util.Queue;
 
 /**
  * @author paras.chawla
- * @version $Id: SerializeDeserializeBT.java, v 0.1 2020-08-04 23:36 paras.chawla Exp $$
- * Construct Binary Search Tree using PreOrder traversal
+ * @version $Id: SerializeDeserializeBT.java, v 0.1 2020-08-04 23:36 paras.chawla Exp $$ Construct Binary Search Tree using PreOrder
+ * traversal
  * <p>
  * You may serialize the following tree:
- *      1 <- root
- *   /    \
- *  2     3
- * / \   /  \
- * X  X 4    5
- *     / \  / \
- *    X  X X   X
+ *             1 <- root
+ *          /    \
+ *         2     3
+ *        / \   /  \
+ *       X  X 4    5
+ *           / \  / \
+ *          X  X X   X
  * <p>
- * PreOrder - Root Left Right "1,2,X,X,3,4,X,X,5,X,X," as "[1,2,3,null,null,4,5]"
- * https://www.youtube.com/watch?v=jwzo6IsMAFQ
+ * PreOrder - Root Left Right "1,2,X,X,3,4,X,X,5,X,X," as "[1,2,3,null,null,4,5]" https://www.youtube.com/watch?v=jwzo6IsMAFQ
  */
 public class SerializeDeserializeBT {
 
@@ -118,30 +117,37 @@ public class SerializeDeserializeBT {
 
         String tokens[] = preOrder.split(",");
         int[] preorder = new int[tokens.length];
-        int i=0;
+        int i = 0;
 
         for (String str : tokens) {
-            preorder[i++]=Integer.parseInt(str);
+            preorder[i++] = Integer.parseInt(str);
         }
 
+        // Approach 1 TC O(n^2)
         //return deSerializeArray(preorder,0,preorder.length-1);
+
+        // Approach 2 TC O(n)
         //return deSerializeArraySol2(preorder,Integer.MIN_VALUE,Integer.MAX_VALUE);
+
+        // Approach 3 TC O(n)
         int[] inorder = preorder.clone();
         Arrays.sort(inorder);
-        return deSerializeArrayUsingInorderAndPreOrder(inorder,preorder);
+        return deSerializeArrayUsingInorderAndPreOrder(inorder, preorder);
     }
 
     //     index [0,1,2,3,4,5,6]
     // preOrder  [4,2,1,3,7,6,9]
-    //            ^     ^     ^
-    //           low    dp    high
+    //            ^       ^   ^
+    //           low     dp   high
     // PreOrder nodes are Root-> Left SubTree -> Right SubTree
     // https://www.youtube.com/watch?v=H594EV9OuDI
     /*                 4 <- root
-    *  [2,1,3]    /       \  [7,6,9]
-    *     [1,3] 2          7 [6,9]
-    *      [1]/  \[3]  [6]/ \[9]
-    * */
+     *  [2,1,3]    /       \  [7,6,9]
+     *     [1,3] 2          7 [6,9]
+     *      [1]/  \[3]  [6]/ \[9]
+     *
+     * TC O(n^2)
+     * */
     private static TreeNode deSerializeArray(int[] preorder, int low, int high) {
 
         // base condition
@@ -151,10 +157,11 @@ public class SerializeDeserializeBT {
 
         TreeNode root = new TreeNode(preorder[low]);
         // To find a point in array, where root-> left is lesser than root.val and right Subtree val is greater than root.val
-        int division = findDivision(preorder,root.val,low,high);
+        // division is the index where root.val < next greater element
+        int division = findDivision(preorder, root.val, low, high);
 
-        root.left = deSerializeArray(preorder,low+1,division-1); //root->left SubTree [2,1,3]
-        root.right=deSerializeArray(preorder,division,high); //root->right Subtree [7,6,9]
+        root.left = deSerializeArray(preorder, low + 1, division - 1); //root->left SubTree [2,1,3]
+        root.right = deSerializeArray(preorder, division, high); //root->right Subtree [7,6,9]
 
         return root;
     }
@@ -171,20 +178,25 @@ public class SerializeDeserializeBT {
 
     // Instead of knowing division idx which helps to bifurgate right and left subtree, use Binary Search Property
     // preOrder [4,2,1,3,7,6,9]
+    //                 ^
     // PreOrder nodes are Root-> Left SubTree -> Right SubTree
     // https://www.youtube.com/watch?v=1pOqgdO327Q
     /*               4(MIN, MAX) <- root
-    *            /                \
-    *           2(MIN,4)           7(4,MAX)
-    *          /       \           / \
-    *         1(MIN,2)  3        6  9
-    */
-    static int currentIdx=0;
+     *            /                \
+     *           2(MIN,4)           7(4,MAX)
+     *          /       \           / \
+     *         1(MIN,2)  3        6    9
+     *
+     *   TC O(n)
+     */
+    static int currentIdx = 0;
 
     // (preorder[],- MIN, MAX)
     private static TreeNode deSerializeArraySol2(int[] preorder, int min, int max) {
 
-        if (currentIdx >= preorder.length) { return null; }
+        if (currentIdx >= preorder.length) {
+            return null;
+        }
 
         TreeNode root = null;
 
@@ -215,6 +227,7 @@ public class SerializeDeserializeBT {
         return buildBST(preorder, 0, preorder.length - 1, inorder, 0, inorder.length - 1, inMap);
     }
 
+    // Root -> Left Subtree -> Right Subtree
     // [4,2,1,3,7,6,9] <- preorder[]
     //  ^           ^
     //  preStart    preEnd
@@ -222,6 +235,9 @@ public class SerializeDeserializeBT {
     // [1,2,3,4,6,7,9] <- inorder[]
     //  ^     ^     ^
     //  inS   Ridx  inEnd
+
+    // inOrder Value -> Index Map
+    // inMap 1->0, 2->1, 3->2, 4->3, 6->4, 7->5, 9->6
 
     /*
     *
@@ -233,9 +249,13 @@ public class SerializeDeserializeBT {
         Recursively doing this on subarrays, we can build a tree out of it :)
     *
     */
-    private static TreeNode buildBST(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd, Map<Integer, Integer> inMap) {
+    //                      buildBST(preorder,              0,          preorder.length - 1, inorder, 0, inorder.length - 1, inMap)
+    private static TreeNode buildBST(int[] preorder, int preStart, int preEnd, int[] inorder, int inStart, int inEnd,
+                                     Map<Integer, Integer> inMap) {
 
-        if (preStart > preEnd || inStart > inEnd) { return null; }
+        if (preStart > preEnd || inStart > inEnd) {
+            return null;
+        }
 
         // root would be always from preorder array
         TreeNode root = new TreeNode(preorder[preStart]);
@@ -244,6 +264,10 @@ public class SerializeDeserializeBT {
         int rootIdx = inMap.get(root.val);
 
         // Elements from inStart to rootIdx-1 is leftSubtree in inorder and Elements from rootIdx+1, inEnd is rightSubtree in inorder
+        // V. IMP - the trick is that no matter which traversal is used, the number of nodes in the subtrees remain the same.
+        // so if in the inorder traversal the length of left subarray is 3,
+        // this length is also the same as that for pre/postorder traversal as well
+
         int numsLeft = rootIdx - inStart;
         root.left = buildBST(preorder, preStart + 1, preStart + numsLeft, inorder, inStart, rootIdx - 1, inMap);
         root.right = buildBST(preorder, preStart + numsLeft + 1, preEnd, inorder, rootIdx + 1, inEnd, inMap);

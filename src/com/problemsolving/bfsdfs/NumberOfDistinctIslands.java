@@ -76,7 +76,7 @@ public class NumberOfDistinctIslands {
         markVisited("L", builder, i, j - 1, grid, row, col); // LEFT
         markVisited("R", builder, i, j + 1, grid, row, col); // UP
 
-        //why backtracking as a moving direction is important
+        // why backtracking as a moving direction is important
         // https://leetcode.com/problems/number-of-distinct-islands/discuss/150037/DFS-with-Explanations
         builder.append("EAST");
     }

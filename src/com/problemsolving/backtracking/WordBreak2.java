@@ -52,6 +52,7 @@ public class WordBreak2 {
         }
     }
 
+    // WORKING properly
     private List<String> wordBreakHelper(String s, List<String> wordDict) {
 
         List<String> result = new ArrayList<>();

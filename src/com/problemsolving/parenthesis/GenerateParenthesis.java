@@ -19,7 +19,8 @@ public class GenerateParenthesis {
     public static void main(String[] args) {
         GenerateParenthesis obj = new GenerateParenthesis();
         //obj.generateParenthesis(1);
-        obj.generateParenthesisSol2(9);
+        obj.generateParenthesisSol2(3);
+        obj.generateParenthesisSol3(3);
     }
 
     // Approach 1 - Get all the permutation of string ="((()))" and filter based on valid parenthesis - Very slow approach
@@ -83,9 +84,10 @@ public class GenerateParenthesis {
     /* Approach 2 -https://backtobackswe.com/platform/content/generate-all-strings-with-n-matched-parentheses/solutions
       Lets say for n =3 ,we can have 3 open brackets and 3 close brackets
       Choice - place '(' or ')'
-      Constraints - 1) can't close until its open 2) count of open bracket matters
+      Constraints - 1) can't close until its open
+                    2) count of open bracket matters
                     3) If openParenCount==closeParenCount -> only 1 branch exist i.e. use open bracket, can't use close bracket
-                    4) If openParenCoun < closeParenCount -> two branches converge i.e. either use open bracket if available or use close
+                    4) If openParenCount < closeParenCount -> two branches converge i.e. either use open bracket if available or use close
                      paren
                     5) If openParentCount== closeParenCount==0 -> Reached base condition
       Goal - To place 2*n characters successfully in String
