@@ -1,6 +1,7 @@
 /**
  * Alipay.com Inc. Copyright (c) 2004-2020 All Rights Reserved.
- */
+ *//*
+
 package com.contest.delphix;
 
 import org.json.simple.JSONArray;
@@ -23,10 +24,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+*/
 /**
  * @author paras.chawla
  * @version $Id: Solution.java, v 0.1 2020-12-30 3:36 PM paras.chawla Exp $$
- */
+ *//*
+
 public class Solution {
 
 
@@ -206,38 +209,46 @@ public class Solution {
         private double         brightness;
         private GeoCoordinates geoCoordinates;
 
-        /**
+        */
+/**
          * Getter method for property <tt>brightness</tt>.
          *
          * @return property value of brightness
-         */
+         *//*
+
         public double getBrightness() {
             return brightness;
         }
 
-        /**
+        */
+/**
          * Setter method for property <tt>brightness</tt>.
          *
          * @param brightness value to be assigned to property brightness
-         */
+         *//*
+
         public void setBrightness(double brightness) {
             this.brightness = brightness;
         }
 
-        /**
+        */
+/**
          * Getter method for property <tt>geoCoordinates</tt>.
          *
          * @return property value of geoCoordinates
-         */
+         *//*
+
         public GeoCoordinates getGeoCoordinates() {
             return geoCoordinates;
         }
 
-        /**
+        */
+/**
          * Setter method for property <tt>geoCoordinates</tt>.
          *
          * @param geoCoordinates value to be assigned to property geoCoordinates
-         */
+         *//*
+
         public void setGeoCoordinates(GeoCoordinates geoCoordinates) {
             this.geoCoordinates = geoCoordinates;
         }
@@ -267,74 +278,90 @@ public class Solution {
         private List<String>       fields;
         private List<List<String>> data;
 
-        /**
+        */
+/**
          * Getter method for property <tt>count</tt>.
          *
          * @return property value of count
-         */
+         *//*
+
         public String getCount() {
             return count;
         }
 
-        /**
+        */
+/**
          * Setter method for property <tt>count</tt>.
          *
          * @param count value to be assigned to property count
-         */
+         *//*
+
         public void setCount(String count) {
             this.count = count;
         }
 
-        /**
+        */
+/**
          * Getter method for property <tt>fields</tt>.
          *
          * @return property value of fields
-         */
+         *//*
+
         public List<String> getFields() {
             return fields;
         }
 
-        /**
+        */
+/**
          * Setter method for property <tt>fields</tt>.
          *
          * @param fields value to be assigned to property fields
-         */
+         *//*
+
         public void setFields(List<String> fields) {
             this.fields = fields;
         }
 
-        /**
+        */
+/**
          * Getter method for property <tt>signature</tt>.
          *
          * @return property value of signature
-         */
+         *//*
+
         public Signature getSignature() {
             return signature;
         }
 
-        /**
+        */
+/**
          * Setter method for property <tt>signature</tt>.
          *
          * @param signature value to be assigned to property signature
-         */
+         *//*
+
         public void setSignature(Signature signature) {
             this.signature = signature;
         }
 
-        /**
+        */
+/**
          * Getter method for property <tt>data</tt>.
          *
          * @return property value of data
-         */
+         *//*
+
         public List<List<String>> getData() {
             return data;
         }
 
-        /**
+        */
+/**
          * Setter method for property <tt>data</tt>.
          *
          * @param data value to be assigned to property data
-         */
+         *//*
+
         public void setData(List<List<String>> data) {
             this.data = data;
         }
@@ -344,38 +371,46 @@ public class Solution {
         private String source;
         private String version;
 
-        /**
+        */
+/**
          * Getter method for property <tt>source</tt>.
          *
          * @return property value of source
-         */
+         *//*
+
         public String getSource() {
             return source;
         }
 
-        /**
+        */
+/**
          * Setter method for property <tt>source</tt>.
          *
          * @param source value to be assigned to property source
-         */
+         *//*
+
         public void setSource(String source) {
             this.source = source;
         }
 
-        /**
+        */
+/**
          * Getter method for property <tt>version</tt>.
          *
          * @return property value of version
-         */
+         *//*
+
         public String getVersion() {
             return version;
         }
 
-        /**
+        */
+/**
          * Setter method for property <tt>version</tt>.
          *
          * @param version value to be assigned to property version
-         */
+         *//*
+
         public void setVersion(String version) {
             this.version = version;
         }
@@ -568,7 +603,9 @@ public class Solution {
         }
     }
 
-    /* -------------------------------------------EXCEPTION CLASSES------------------------------------------------------ */
+    */
+/* -------------------------------------------EXCEPTION CLASSES------------------------------------------------------ *//*
+
 
     static class ParamIllegalException extends Exception {
         public ParamIllegalException(String s) {
@@ -577,7 +614,9 @@ public class Solution {
         }
     }
 
-    /* -------------------------------------------Constant CLASSES------------------------------------------------------ */
+    */
+/* -------------------------------------------Constant CLASSES------------------------------------------------------ *//*
+
 
     static class Constant{
         private static final String USER_AGENT = "Mozilla/5.0";
@@ -586,7 +625,9 @@ public class Solution {
     }
 
 
-    /* --------------------------------------------------ENUMS------------------------------------------------------------- */
+    */
+/* --------------------------------------------------ENUMS------------------------------------------------------------- *//*
+
     public enum Direction {
 
         NORTH("North"),
@@ -618,7 +659,9 @@ public class Solution {
 
     }
 
-    /* -------------------------------------------JUNIT TEST CASES------------------------------------------------------ */
+    */
+/* -------------------------------------------JUNIT TEST CASES------------------------------------------------------ *//*
+
     public class NasaAPITest {
         @Test
         public void test_API_Url_null() throws IOException {
@@ -646,4 +689,4 @@ public class Solution {
             Assertions.assertNull(actualResult);
         }
     }
-}
+}*/
